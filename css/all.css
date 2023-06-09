@@ -31,6 +31,9 @@ a{
     left: 0;
     width: 100%;
 }
+.navbar .logonav{
+    margin-right: 5px;
+}
 
 header{
     background-color: rgb(220, 220, 220);
@@ -84,3 +87,12 @@ body{
     background-color:#3A3D52;
 }
 
+header .admin-button {
+    margin-right: 10px;
+}
+
+/* Modifiez cette ligne pour ajuster la taille de l'icône du bouton "Admin" */
+header .admin-button img {
+    width: 25px;
+    height: 25px;
+}
