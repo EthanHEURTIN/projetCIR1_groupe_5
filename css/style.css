@@ -1,0 +1,157 @@
+.Logo{
+    display: flex;
+    width: 30%;
+    justify-content: center;
+}
+
+.cadre{
+    border: 1px solid;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(220, 220, 220);
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+h1{
+    color: #F6F3E5;
+    font-size: x-large;
+    text-align: center;
+    margin: 20px;
+}
+
+.button{
+    border: solid 1px;
+    background-color: rgb(200,200,200);
+    padding: 5px;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+  //////////////////////////
+
+  body{
+  }
+
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: arial;
+}
+
+body header{
+    color: #F6F3E5;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: #F6F3E5;
+}
+
+.nav-links{
+    position: absolute;
+    left: 12%;
+}
+
+.navbar{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    background-color:#A0392C ;
+}
+
+header{
+    background-color: rgb(220, 220, 220);
+    margin-bottom: 50px;
+    display: flex;
+    color: #F6F3E5;
+}
+
+header li{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    background-color:#292119;
+    color: #F6F3E5;
+    margin: 10px;
+    border-radius: 100px;
+}
+
+
+header li a{
+    display: block;
+    padding: 10px;
+}
+
+header li:hover{
+    background-color:#A0392C ;
+    color: #F6F3E5;
+}
+
+header ul li a{
+    display: flex;
+    align-items: center;
+}
+
+header li img{
+    width: 25px;
+    height: 25px;
+}
+
+.logo{
+    margin: 10px;
+    width: 170px;
+    height: 50px;
+}
+
+footer{
+    border-top: 1px solid white;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 0;
+    background-color: rgb(220, 220, 220);
+    display: flex;
+ 
+    position: fixed;
+ 
+    bottom: 0;
+}
+
+.lien{
+    display: flex;
+    flex-direction: column;
+}
+
+.lien a {
+    color:black;
+    text-align: left;
+}
+
+.lien a:hover{
+    color: white;
+}
+
+
+footer .linkedin{
+    display: flex;
+    flex-direction: row;
+}
+
+footer .linkedin a{
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+footer img{
+    width: 50px;
+    height: 50px;
+}
