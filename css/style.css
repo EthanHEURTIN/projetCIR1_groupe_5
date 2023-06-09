@@ -5,16 +5,18 @@
 }
 
 .cadre{
-    border: 1px solid;
     text-align: center;
     padding: 20px;
-    background-color: rgb(220, 220, 220);
+    background-color:#3A3D52;
+    color: #F6F3E5;
+    font-size:3ch ;
     width: 80%;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
+    height: 100%;
+
+
 }
-
-
 
 h1{
     color: #F6F3E5;
@@ -23,25 +25,12 @@ h1{
     margin: 20px;
 }
 
-.button{
-    border: solid 1px;
-    background-color: rgb(200,200,200);
-    padding: 5px;
-    display: flex;
-    width: 20%;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-  //////////////////////////
-
-  body{
-  }
 
 *{
     box-sizing: border-box;
     margin: 0 auto;
     font-family: arial;
+
 }
 
 body header{
@@ -64,13 +53,17 @@ a{
     margin: 0 auto;
     width: 100%;
     background-color:#A0392C ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 header{
     background-color: rgb(220, 220, 220);
     margin-bottom: 50px;
     display: flex;
-    color: #F6F3E5;
+    color: #F6F3E5
 }
 
 header li{
@@ -111,18 +104,17 @@ header li img{
 }
 
 footer{
-    border-top: 1px solid white;
     width: 100%;
     text-align: center;
     padding: 20px;
     margin-top: 50px;
     margin-bottom: 0;
-    background-color: rgb(220, 220, 220);
     display: flex;
- 
+    background-color:#A0392C ;
     position: fixed;
- 
+    position:absolute ;
     bottom: 0;
+    left: 0;
 }
 
 .lien{
@@ -136,7 +128,7 @@ footer{
 }
 
 .lien a:hover{
-    color: white;
+    color: black;
 }
 
 
@@ -154,4 +146,12 @@ footer .linkedin a{
 footer img{
     width: 50px;
     height: 50px;
+}
+
+body{
+    background-color:#3A3D52;
+}
+
+.lk{
+    margin-right: 1rem;
 }
