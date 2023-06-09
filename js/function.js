@@ -44,19 +44,36 @@ function readFile(){
 // -------------------------
 
 
-function callWrite() {
+/*function callWrite() {
     writeFile("form-findByDirector",  );
 }
+*/
 
 form_button = document.getElementById("go");
 form_button.onclick = callWrite;
 
-//transphorme les accents en caractères normaux dans le texte de la requête
 
-
-//afficher le résultat de la requête
-function showResult(){
-    let result = readFileByName("results.txt");
-    let resultDiv = document.getElementById("result");
-    let Table = document.createElement("table");
+function findByDirector(){
+    let director = document.getElementById("director").value;
+    writeFile(director, "findByDirector");
 }
+
+function findByTimer(){
+    let timer = document.getElementById("timer").value;
+    writeFile(timer, "findByTimer");
+}
+
+function findByType(){
+    let type = document.getElementById("type").value;
+    writeFile(type, "findByType");
+}
+
+function findByTitle(){
+    let title = document.getElementById("title").value;
+    writeFile(title, "findByTitle");
+
+}
+
+
+
+//affichage des résultats 
