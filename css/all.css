@@ -30,6 +30,7 @@ a{
     top: 0;
     left: 0;
     width: 100%;
+    justify-content: space-between;
 }
 .navbar .logonav{
     margin-right: 5px;

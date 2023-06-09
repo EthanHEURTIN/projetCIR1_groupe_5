@@ -17,11 +17,10 @@ function writeFile(id_form,func) {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    
+
    // text1.submit();
 }
 // -------------------------
-
 
 
 // ------- READ FILE -------
@@ -40,9 +39,35 @@ function readFileByName(fileName){
 
 function readFile(){
     readFileByName("ready.txt");
-    return readFileByName("results.txt");
+    //return readFileByName("results.txt");
+    console.log(readFileByName("results.txt"));
 }
-// -------------------------
+
+function extraireValeurs(texte) {
+    const lignes = texte.split("\n");
+  
+    const valeurs = lignes.map(function(ligne) {
+      const elements = ligne.trim().split(";");
+      const dureeReaction = parseFloat(elements[0]);
+      const titre = elements[1];
+      const duree = parseInt(elements[2]);
+      const genre = elements[3];
+  
+      return {
+        dureeReaction,
+        titre,
+        duree,
+        genre
+      };
+    });
+  
+    return valeurs;
+  }
+
+
+
+
+
 
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
@@ -75,5 +100,5 @@ form_button.onclick = callWriteTitle;
 
 
 
-//recuperer le resultat en fichier txt avec la fonction readFile()
+
 
