@@ -47,19 +47,18 @@ function readFile(){
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
     writeFile("form-findByDirector", "findByDirector");
-    loader();
 }
 function callWriteTimer() {//ecrit temp du film dans le fichier request.txt
     writeFile("form-findByTimer", "findByTimer");
-    loader();
+
 }
 function callWriteType() { //ecrit le genre de film dans le fichier request.txt
     writeFile("form-findByType", "findByType");
-    loader();
+
 }
 function callWriteTitle() {//ecrit le titre dans le fichier request.txt
     writeFile("form-findByTitle", "findByTitle");
-    loader();
+
 }
 //Director
 form_button = document.getElementById("director");
@@ -76,8 +75,5 @@ form_button.onclick = callWriteTitle;
 
 
 
-//fonction loader
-function loader() {
-    let loader = document.getElementById("loader");
-    loader.style.display = "none";
-}
+//recuperer le resultat en fichier txt avec la fonction readFile()
+
