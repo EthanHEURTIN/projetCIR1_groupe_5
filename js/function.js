@@ -44,36 +44,40 @@ function readFile(){
 // -------------------------
 
 
-/*function callWrite() {
+function callWrite() {
     writeFile("form-findByDirector",  );
 }
-*/
+
 
 form_button = document.getElementById("go");
 form_button.onclick = callWrite;
 
 
-function findByDirector(){
+/*function findByDirector() {
     let director = document.getElementById("director").value;
     writeFile(director, "findByDirector");
 }
 
 function findByTimer(){
-    let timer = document.getElementById("timer").value;
-    writeFile(timer, "findByTimer");
+    let time1 = document.getElementById("time1").value;
+    let time2 = document.getElementById("time2").value;
+    console.log(time1 + " " + time2);
+    //writeFile(timer, "findByTimer");
 }
 
 function findByType(){
     let type = document.getElementById("type").value;
-    writeFile(type, "findByType");
+    console.log(type);
+    //writeFile(type, "findByType");
 }
 
 function findByTitle(){
+    
     let title = document.getElementById("title").value;
-    writeFile(title, "findByTitle");
+    console.log(title);
+    //writeFile(title, "findByTitle");
 
-}
+}*/
 
 
 
-//affichage des résultats 
