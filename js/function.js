@@ -72,3 +72,8 @@ form_button.onclick = callWriteType;
 //Title
 form_button = document.getElementById("title");
 form_button.onclick = callWriteTitle;
+
+
+
+//recuperer le resultat en fichier txt avec la fonction readFile()
+
