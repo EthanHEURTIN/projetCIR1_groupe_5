@@ -23,6 +23,7 @@ function writeFile(id_form,func) {
 // -------------------------
 
 
+
 // ------- READ FILE -------
 function readFileByName(fileName){
 
@@ -44,19 +45,30 @@ function readFile(){
 // -------------------------
 
 
-function callWrite() {
-    writeFile("form-findByDirector",  );
+function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
+    writeFile("form-findByDirector", "findByDirector");
 }
-
-form_button = document.getElementById("go");
-form_button.onclick = callWrite;
-
-//transphorme les accents en caractères normaux dans le texte de la requête
-
-
-//afficher le résultat de la requête
-function showResult(){
-    let result = readFileByName("results.txt");
-    let resultDiv = document.getElementById("result");
-    let Table = document.createElement("table");
+function callWriteTimer() {//ecrit temp du film dans le fichier request.txt
+    writeFile("form-findByTimer", "findByTimer");
 }
+function callWriteType() { //ecrit le genre de film dans le fichier request.txt
+    writeFile("form-findByType", "findByType");
+}
+function callWriteTitle() {//ecrit le titre dans le fichier request.txt
+    writeFile("form-findByTitle", "findByTitle");
+}
+//Director
+form_button = document.getElementById("director");
+form_button.onclick = callWriteDirector;
+//Time
+form_button = document.getElementById("time");
+form_button.onclick = callWriteTimer;
+//Type
+form_button = document.getElementById("type");
+form_button.onclick = callWriteType;
+//Title
+form_button = document.getElementById("title");
+form_button.onclick = callWriteTitle;
+
+
+
