@@ -1,0 +1,60 @@
+h1{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+table{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+}
+#tmpData{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+p{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+th, td{
+    text-align: center;
+    padding: 20px;
+    border: 1px none;
+    font-style: bold;
+    color : black;
+    
+}
+tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+tr:nth-child(even){
+    background-color: lightgrey;
+}
+tr:hover{
+    cursor: pointer;
+    font-size: 1.3rem;
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}
+
+th{
+    background-color: #4CAF50;
+}
+.contenu{
+
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7rem;
+}
+#pp{
+    text-align: center;
+
+}
