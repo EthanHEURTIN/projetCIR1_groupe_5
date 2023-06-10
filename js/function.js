@@ -1,5 +1,6 @@
 // ------- WRITE FILE -------
-function writeFile(id_form,func) {
+ // ------- WRITE FILE -------
+ function writeFile(id_form,func) {
 
   var element = document.createElement('a');
 
@@ -20,13 +21,40 @@ function writeFile(id_form,func) {
 
  // text1.submit();
 }
-// -------------------------
-function getURLParameter(name) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  return urlParams.get(name);
+function writeFileAll(formId1, func1, formId2, func2, formId3, func3) {
+  var element = document.createElement('a');
+
+  let text1 = formId1;
+  let text2 = formId2;
+  let text3 = formId3;
+
+  let textToSave = func1 + ";" + text1;
+  textToSave += "\n" + func2 + ";" + text2;
+  textToSave += "\n" + func3 + ";" + text3;
+
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
+  element.setAttribute('download', 'request.txt');
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
 
+// -------------------------
+
+function separateFormInputs(formId) {
+  const form = document.getElementById(formId);
+  const inputs = form.getElementsByTagName('input');
+
+  const values = [];
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+    values.push(input.value);
+  }
+
+  return values;
+}
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
   form_button = document.getElementById("director");
@@ -38,7 +66,7 @@ function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
 function callWriteTime() {//ecrit temp du film dans le fichier request.txt
   form_button = document.getElementById("time");
   form_button.onclick = callWriteTime;
-  writeFile("form-findByTimer", "findByTimer");
+  writeFile("form-findByTimer", "findByDirector");
 
 }
 function callWriteType() { //ecrit le genre de film dans le fichier request.txt
@@ -56,12 +84,19 @@ function callWriteTitle() {//ecrit le titre dans le fichier request.txt
 
 
 }
-function callWriteAll() {//ecrit tout les parametre dans le fichier request.txt
-  form_button = document.getElementById("all");
-  form_button.onclick = callWriteAll;
-  writeFile("form-findByAll", "findByAll");
+function callWriteAll() {
+  const values = separateFormInputs('form-findByAll');
+  const nameValue = values[0];
+  console.log(nameValue);
+  const titleValue = values[1];
+  console.log(titleValue);
+  const typeValue = values[2];
+  console.log(typeValue);
 
+
+  writeFileAll(nameValue, "findByDirector", titleValue, "findByTitle", typeValue, "findByType");
 }
+
 // ------- READ FILE -------
 function readFileByName(fileName){
 
@@ -122,7 +157,11 @@ function tempExecution(text) {
 }
 tempExecution(text);
 
-
+function getURLParameter(name) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(name);
+}
 
 
 
@@ -132,10 +171,7 @@ tempExecution(text);
 
   
 
-function callButton() {
-//verifie quel fonction est appelé callWriteDirector, callWriteTime, callWriteType, callWriteTitle
-}
-callButton();
+
 
 function creerTableauFilms(text) {
   let boubou = 'realisateur'
