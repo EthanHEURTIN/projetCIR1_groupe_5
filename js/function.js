@@ -1,5 +1,5 @@
 // ------- WRITE FILE -------
- // ------- WRITE FILE -------
+
  function writeFile(id_form,func) {
 
   var element = document.createElement('a');
@@ -21,16 +21,28 @@
 
  // text1.submit();
 }
-function writeFileAll(formId1, func1, formId2, func2, formId3, func3) {
+function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, func4) {
   var element = document.createElement('a');
 
   let text1 = formId1;
   let text2 = formId2;
   let text3 = formId3;
+  let text4 = formId4;
 
-  let textToSave = func1 + ";" + text1;
-  textToSave += "\n" + func2 + ";" + text2;
-  textToSave += "\n" + func3 + ";" + text3;
+  let textToSave = "";
+
+  if (text1 !== "") {
+    textToSave += func1 + ";" + text1 + "\n";
+  }
+  if (text2 !== "") {
+    textToSave += func2 + ";" + text2 + "\n";
+  }
+  if (text3 !== "") {
+    textToSave += func3 + ";" + text3 + "\n";
+  }
+  if (text4 !== "") {
+    textToSave += func4 + ";" + text4 + "\n";
+  }
 
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
   element.setAttribute('download', 'request.txt');
@@ -43,13 +55,15 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3) {
 
 // -------------------------
 
-function separateFormInputs(formId) {
-  const form = document.getElementById(formId);
-  const inputs = form.getElementsByTagName('input');
 
-  const values = [];
+
+function separateFormInputs(formId) {
+  let form = document.getElementById(formId);
+  let inputs = form.getElementsByTagName('input');
+
+  let values = [];
   for (let i = 0; i < inputs.length; i++) {
-    const input = inputs[i];
+    let input = inputs[i];
     values.push(input.value);
   }
 
@@ -85,17 +99,43 @@ function callWriteTitle() {//ecrit le titre dans le fichier request.txt
 
 }
 function callWriteAll() {
-  const values = separateFormInputs('form-findByAll');
-  const nameValue = values[0];
+  let values = separateFormInputs('form-findByAll');
+  let nameValue = values[0];
+  let request1 = "findByDirector";
   console.log(nameValue);
-  const titleValue = values[1];
+  let titleValue = values[1];
+  let request2 = "findByTitle";
   console.log(titleValue);
-  const typeValue = values[2];
+  let typeValue = values[2];
+  let request3 = "findByType";
   console.log(typeValue);
+  let timeValuemin = values[3];
+  let timeValuemax = values[4];
+  let timeValue = timeValuemin + ";" + timeValuemax;
+  let request4 = "findByTimer";
+  console.log(timeValue);
+//verifie si les champs sont remplis 
+  if (nameValue == "") {
+    nameValue = "";
+    request1 = "";
+  }
+  if (titleValue == "") {
+    titleValue = "";
+    request2 = "";
+  }
+  if (typeValue == "") {
+    typeValue = "";
+    request3 = "";
+  }
+  if (timeValuemin == "" || timeValuemax == "") {
+    timeValue = "";
+    request4 = "";
+  }
 
 
-  writeFileAll(nameValue, "findByDirector", titleValue, "findByTitle", typeValue, "findByType");
+  writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
+
 
 // ------- READ FILE -------
 function readFileByName(fileName){
@@ -117,25 +157,36 @@ function readFile(){
 }
 // -------------------------
 
-let text = readFile();
+
+
+
+
+
+let text = readFile();//recupere le fichier results.txt en un simple fichier txt
 
 function writeDirector() {
-  const nameValue = getURLParameter("name");
+  let nameValue = getURLParameter("name");
   document.getElementById("pp").innerHTML = "Qu'a fait : " + nameValue;
 }
+
 function writeTime() {
-  const timeValue = getURLParameter("search");
+  let timeValue = getURLParameter("search");
   document.getElementById("pp").innerHTML = " : " + timeValue;
 }
+
+
 function writeType() {
-  const typeValue = getURLParameter("type");
+  let typeValue = getURLParameter("type");
   document.getElementById("pp").innerHTML = "Les Films du genre : " + typeValue;
 }
+
 function writeTitle() {
-  const titleValue = getURLParameter("title");
+  let titleValue = getURLParameter("title");
   document.getElementById("pp").innerHTML = "Le Film : " + titleValue;
 }
-function write() {
+
+
+function writeRecherche() {
   if (getURLParameter("name") != null) {
     writeDirector();
   }
@@ -149,7 +200,7 @@ function write() {
     writeTitle();
   }
 }
-write();
+writeRecherche();
 
 function tempExecution(text) {
   let tmpData = text.split("\n")[0].split(";")[0];
@@ -158,18 +209,14 @@ function tempExecution(text) {
 tempExecution(text);
 
 function getURLParameter(name) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
   return urlParams.get(name);
 }
 
 
 
 
-
-
-
-  
 
 
 
@@ -228,7 +275,7 @@ console.log(tableauFilms);
 
 
 
-//creer une fonction avec un tableau et l'affiche dans le html a l'id resultat
+
 function afficherTableau(tableau) {
   let html = "<table>";
   let boubou = 'realisateur'
