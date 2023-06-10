@@ -76,6 +76,28 @@ function tempExecution(text) {
   document.getElementById("tmpData").innerHTML = "Temps d'exécution : " + tmpData + " ms";
 }
 tempExecution(text);
+
+//recupere le input de la page html quand on clique sur le bouton du formulaire
+function callButton() {
+  form_button = document.getElementById("form-findByDirector");
+  form_button.onclick = callButton;
+  let director = document.getElementById("director").value;
+  console.log(director);
+  form_button = document.getElementById("form-findByTimer");
+  form_button.onclick = callButton;
+  let time = document.getElementById("time").value;
+  console.log(time);
+  form_button = document.getElementById("form-findByType");
+  form_button.onclick = callButton;
+  let type = document.getElementById("type").value;
+  console.log(type);
+  form_button = document.getElementById("form-findByTitle");
+  form_button.onclick = callButton;
+  let title = document.getElementById("title").value;
+  console.log(title);
+}
+  
+
 function callButton() {
 //verifie quel fonction est appelé callWriteDirector, callWriteTime, callWriteType, callWriteTitle
 }
