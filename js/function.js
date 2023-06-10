@@ -21,15 +21,23 @@ function writeFile(id_form,func) {
  // text1.submit();
 }
 // -------------------------
-//fonction qui ajoute une phrase au dans la balise real de la page html
+function getURLParameter(name) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(name);
+}
+
+
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
   form_button = document.getElementById("director");
   form_button.onclick = callWriteDirector;
   writeFile("form-findByDirector", "findByDirector");
+
+
 }
 function callWriteTime() {//ecrit temp du film dans le fichier request.txt
   form_button = document.getElementById("time");
-  form_button.onclick = callWriteTimer;
+  form_button.onclick = callWriteTime;
   writeFile("form-findByTimer", "findByTimer");
 
 }
@@ -38,6 +46,7 @@ function callWriteType() { //ecrit le genre de film dans le fichier request.txt
   form_button.onclick = callWriteType;
 
   writeFile("form-findByType", "findByType");
+  
 
 }
 function callWriteTitle() {//ecrit le titre dans le fichier request.txt
@@ -45,9 +54,14 @@ function callWriteTitle() {//ecrit le titre dans le fichier request.txt
   form_button.onclick = callWriteTitle;
   writeFile("form-findByTitle", "findByTitle");
 
+
 }
+function callWriteAll() {//ecrit tout les parametre dans le fichier request.txt
+  form_button = document.getElementById("all");
+  form_button.onclick = callWriteAll;
+  writeFile("form-findByAll", "findByAll");
 
-
+}
 // ------- READ FILE -------
 function readFileByName(fileName){
 
@@ -70,6 +84,37 @@ function readFile(){
 
 let text = readFile();
 
+function writeDirector() {
+  const nameValue = getURLParameter("name");
+  document.getElementById("pp").innerHTML = "Qu'a fait : " + nameValue;
+}
+function writeTime() {
+  const timeValue = getURLParameter("search");
+  document.getElementById("pp").innerHTML = " : " + timeValue;
+}
+function writeType() {
+  const typeValue = getURLParameter("type");
+  document.getElementById("pp").innerHTML = "Les Films du genre : " + typeValue;
+}
+function writeTitle() {
+  const titleValue = getURLParameter("title");
+  document.getElementById("pp").innerHTML = "Le Film : " + titleValue;
+}
+function write() {
+  if (getURLParameter("name") != null) {
+    writeDirector();
+  }
+  if (getURLParameter("time") != null) {
+    writeTime();
+  }
+  if (getURLParameter("type") != null) {
+    writeType();
+  }
+  if (getURLParameter("title") != null) {
+    writeTitle();
+  }
+}
+write();
 
 function tempExecution(text) {
   let tmpData = text.split("\n")[0].split(";")[0];
@@ -77,25 +122,14 @@ function tempExecution(text) {
 }
 tempExecution(text);
 
-//recupere le input de la page html quand on clique sur le bouton du formulaire
-function callButton() {
-  form_button = document.getElementById("form-findByDirector");
-  form_button.onclick = callButton;
-  let director = document.getElementById("director").value;
-  console.log(director);
-  form_button = document.getElementById("form-findByTimer");
-  form_button.onclick = callButton;
-  let time = document.getElementById("time").value;
-  console.log(time);
-  form_button = document.getElementById("form-findByType");
-  form_button.onclick = callButton;
-  let type = document.getElementById("type").value;
-  console.log(type);
-  form_button = document.getElementById("form-findByTitle");
-  form_button.onclick = callButton;
-  let title = document.getElementById("title").value;
-  console.log(title);
-}
+
+
+
+
+
+
+
+
   
 
 function callButton() {
