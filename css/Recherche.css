@@ -1,4 +1,4 @@
-.contenu{
+#contenu{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -6,6 +6,15 @@
     margin-top: 7rem;
 }
 
-.recherche {
-    margin: 20px;
+h1{
+    margin: 50px;
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    color:blue;
 }
