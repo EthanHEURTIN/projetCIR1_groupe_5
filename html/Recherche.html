@@ -6,9 +6,9 @@
     <title> Accueil </title>
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/Recherche.css">
-    <script src="/js/function.js" defer></script>
-    <script src="/js/test.js" defer></script>
-    <script src="/js/main.js" defer></script>
+    <script src="../js/function.js" defer></script>
+    <script src="../js/test.js" defer></script>
+    <script src="../js/main.js" defer></script>
 </head>
 
 
@@ -33,27 +33,26 @@
     <div class="contenu">
         <div class="Recherche">
            <h1>Recherche</h1> 
-        </div>
-        <div>
+        
             <form id="form-findByDirector" action="result.html">
                 <p>Director’s name:</p>
                 <input type="text" name="name"><br>
-                <input type="submit" id="director" value="recherche">
+                <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
             </form>
             <form id="form-findByTitle" action="result.html">
                 <p>Title:</p>
                 <input type="text" name="title"><br>
-                <input type="submit" id="title" value="recherche">
+                <input type="submit" id="title" value="recherche" onclick="callWriteTitle()">
             </form>
             <form id="form-findByType" action="result.html">
                 <p>Genre:</p>
                 <input type="text" name="type"><br>
-                <input type="submit" id="type" value="recherche">
+                <input type="submit" id="type" value="recherche" onclick="callWriteType()">
             </form>
             <form id="form-findByTimer" action="result.html">
                 <p>Recherche par durée</p>
                 <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
-                <input type="submit" id="time" value="recherche">   
+                <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
             </form>
         </div>
 
