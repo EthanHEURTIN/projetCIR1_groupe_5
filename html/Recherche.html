@@ -24,36 +24,38 @@
                     <li>
                         <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
                     </li>
+                    <li class="admin-button">
+                        <a><img src="../image/Admin.png" class="logonav">Admin</button>
                 </ul>
         </nav>
     </header>
 
-
+    <div id="add"></div>
+    <div id="delete"></div>
     <div id="contenu">
         <div class="Recherche">
            <h1>Recherche</h1> 
-        </div>
         
-        <div id="formulaire">
+        
             <form id="form-findByDirector" action="result.html">
                 <p>Director’s name :</p>
-                <input type="text" name="name"><br>
+                <input type="text" name="name" placeholder="Recherche..."><br>
                 <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
             </form>
             
             <form id="form-findByTitle" action="result.html">
                 <p>Title :</p>
-                <input type="text" name="title"><br>
+                <input type="text" name="title" placeholder="Recherche..."><br>
                 <input type="submit" id="title" value="recherche" onclick="callWriteTitle()">
             </form>
             <form id="form-findByType" action="result.html">
                 <p>Genre :</p>
-                <input type="text" name="type"><br>
+                <input type="text" name="type" placeholder="Recherche..."><br>
                 <input type="submit" id="type" value="recherche" onclick="callWriteType()">
             </form>
             <form id="form-findByTimer" action="result.html">
                 <p>Recherche par durée :</p>
-                <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
                 <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
             </form>
         </div>
@@ -63,16 +65,19 @@
             <h1>Recherche Simultanée</h1>
             <form id="form-findByAll" action="result.html">
                 <p>Director’s name :</p>
-                <input type="text" name="name"><br>
+                <input type="text" name="name" placeholder="Recherche..."><br>
                 <p>Title :</p>
-                <input type="text" name="title"><br>
+                <input type="text" name="title" placeholder="Recherche..."><br>
                 <p>Genre :</p>
-                <input type="text" name="type"><br>
+                <input type="text" name="type" placeholder="Recherche..."><br>
                 <p>Recherche par durée :</p>
-                <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
                 <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
             </form>
         </div>
+
+    </div>
+    <div id="top"></div>
 
     
 </main>

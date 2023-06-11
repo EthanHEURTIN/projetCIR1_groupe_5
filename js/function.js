@@ -71,31 +71,22 @@ function separateFormInputs(formId) {
 }
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
-  form_button = document.getElementById("director");
-  form_button.onclick = callWriteDirector;
   writeFile("form-findByDirector", "findByDirector");
-
 
 }
 function callWriteTime() {//ecrit temp du film dans le fichier request.txt
-  form_button = document.getElementById("time");
-  form_button.onclick = callWriteTime;
-  writeFile("form-findByTimer", "findByDirector");
 
+  writeFile("form-findByTimer", "findByTimer");
 }
-function callWriteType() { //ecrit le genre de film dans le fichier request.txt
-  form_button = document.getElementById("type");
-  form_button.onclick = callWriteType;
 
-  writeFile("form-findByType", "findByType");
+function callWriteType() { //ecrit le genre de film dans le fichier request.txt
+ writeFile("form-findByType", "findByType");
   
 
 }
-function callWriteTitle() {//ecrit le titre dans le fichier request.txt
-  form_button = document.getElementById("title");
-  form_button.onclick = callWriteTitle;
-  writeFile("form-findByTitle", "findByTitle");
 
+function callWriteTitle() {//ecrit le titre dans le fichier request.txt
+  writeFile("form-findByTitle", "findByTitle");
 
 }
 function callWriteAll() {
@@ -114,7 +105,6 @@ function callWriteAll() {
   let timeValue = timeValuemin + ";" + timeValuemax;
   let request4 = "findByTimer";
   console.log(timeValue);
-//verifie si les champs sont remplis 
   if (nameValue == "") {
     nameValue = "";
     request1 = "";
@@ -164,41 +154,62 @@ function readFile(){
 
 let text = readFile();//recupere le fichier results.txt en un simple fichier txt
 
-function writeDirector() {
+function getURLParameter(name) {
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
+  return urlParams.get(name);
+}
+//avec la fonction getURLParameter on recupere les parametres de l'url s'éparer par des &
+//on recupere les parametres de l'url et on les affiches dans le paragraphe pp
+
+function rechercheDirector() {
   let nameValue = getURLParameter("name");
-  document.getElementById("pp").innerHTML = "Qu'a fait : " + nameValue;
+  return nameValue;
 }
 
-function writeTime() {
-  let timeValue = getURLParameter("search");
-  document.getElementById("pp").innerHTML = " : " + timeValue;
+function rechercheTime() {
+  let timeValue1 = getURLParameter("time1");
+  let timeValue2 = getURLParameter("time2");
+  let timeValue = [timeValue1, timeValue2];
+  return timeValue;
 }
 
 
-function writeType() {
+function rechercheType() {
   let typeValue = getURLParameter("type");
-  document.getElementById("pp").innerHTML = "Les Films du genre : " + typeValue;
+  return typeValue;
 }
 
-function writeTitle() {
+function rechercheTitle() {
   let titleValue = getURLParameter("title");
-  document.getElementById("pp").innerHTML = "Le Film : " + titleValue;
+  return titleValue;
 }
 
 
 function writeRecherche() {
-  if (getURLParameter("name") != null) {
-    writeDirector();
+  let directorValue = rechercheDirector();
+  let timeValue = rechercheTime()[0];
+  let timeValue2 = rechercheTime()[1];
+  let typeValue = rechercheType();
+  let titleValue = rechercheTitle();
+
+  let text="";
+  if (directorValue !== null&& directorValue !== "") {
+    text+="Le realisateur : " + directorValue;
   }
-  if (getURLParameter("time") != null) {
-    writeTime();
+  if (titleValue !== null&& titleValue !== "") {
+    text +=  "Le titre du film : " + titleValue;
   }
-  if (getURLParameter("type") != null) {
-    writeType();
+  if (typeValue !==  null && typeValue !== "") {
+    text += "Le genre du film : " + typeValue;
   }
-  if (getURLParameter("title") != null) {
-    writeTitle();
+
+  if (timeValue !== null && timeValue2 !== null && timeValue !== "" && timeValue2 !== "") {
+    text += "La durée : " + timeValue + " min - " + timeValue2 + " min";
   }
+    
+  document.getElementById("pp").innerHTML = text;
+
 }
 writeRecherche();
 
@@ -208,11 +219,6 @@ function tempExecution(text) {
 }
 tempExecution(text);
 
-function getURLParameter(name) {
-  let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  return urlParams.get(name);
-}
 
 
 
@@ -286,7 +292,7 @@ function afficherTableau(tableau) {
     for (let i = 0; i < tableau.length; i++) {
       html += "<tr>";
       html += "<td>" + tableau[i].titre + "</td>";
-      html += "<td>" + tableau[i].duree + "</td>";
+      html += "<td>" + tableau[i].duree + " min </td>";
       html += "<td>" + tableau[i].genre + "</td>";
       html += "</tr>";
     }
@@ -333,6 +339,13 @@ function afficherTableau(tableau) {
 }
 afficherTableau(tableauFilms);
 
+function playMusic(genre) {
+    if (genre == "Western") {
+      let audio = new Audio('');
+      audio.play();
+    }
+
+}
 
 
 
