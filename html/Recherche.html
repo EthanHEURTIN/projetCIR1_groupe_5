@@ -43,7 +43,7 @@
                     
                     <ul> 
                         <li>
-                            <p>Rechercher par:</p>
+                            <p>Rechercher par : </p>
                         </li>
                         <li>
                             <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur(),activerBoutons() ">Realisateur</a>
@@ -56,19 +56,20 @@
                         </li>
                     </ul>
                     <form class="here" id="id" action="result.html">
-                        <input type="text" id="searchType" name="name"><br>
+                        <input type="text" id="searchType" name="name" placeholder="Recherche..." required><span class="validity"></span><br>
                         <input type="submit" id="tap" value="recherche" onclick="callWrite()">
                     </form>
 
-
+                    <div id="error"></div>
                 </div>
-                <div id="byTime">
-                    <form id="form-findByTimer" action="result.html">
+                
+                
+                    <form id="form-findByTime" action="result.html">
                         <p>Recherche par durée :</p>
-                        <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                        <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" required> et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" required> minutes</p>
                         <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
                     </form>
-                </div>
+                
             </div>
 
         
@@ -76,11 +77,11 @@
                 <h1>Recherche Simultanée</h1>
                 <form id="form-findByAll" action="result.html">
                     <p>Director’s name :</p>
-                    <input type="text" name="name" placeholder="Recherche..."><br>
+                    <input type="text" name="name" placeholder="Recherche..."  pattern="[A-Za-z]"><br>
                     <p>Title :</p>
-                    <input type="text" name="title" placeholder="Recherche..."><br>
+                    <input type="text" name="title" placeholder="Recherche..."  pattern="[A-Za-z]"><br>
                     <p>Genre :</p>
-                    <input type="text" name="type" placeholder="Recherche..."><br>
+                    <input type="text" name="type" placeholder="Recherche..."  pattern="[a-z]"><br>
                     <p>Recherche par durée :</p>
                     <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
                     <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
@@ -99,16 +100,16 @@
                     <h1>Ajouter</h1>
                     <form id="form-findByAdd">
                       <p>Réalisateur:</p>
-                      <input type="text" name="name" placeholder="Recherche...">
+                      <input type="text" name="name" placeholder="Recherche..."required>
                       <span id="nameError1" class="input-error"></span><br>
                       <p>Titre :</p>
-                      <input type="text" name="title" placeholder="Recherche...">
+                      <input type="text" name="title" placeholder="Recherche..."required>
                       <span id="titleError1" class="input-error"></span><br>
                       <p>Genre :</p>
-                      <input type="text" name="type" placeholder="Recherche...">
+                      <input type="text" name="type" placeholder="Recherche..."required>
                       <span id="typeError1" class="input-error"></span><br>
                       <p>Durée :</p>
-                        <input type="number" name="time1" placeholder="Recherche..." min="5" max="300">minutes
+                        <input type="number" name="time1" placeholder="Recherche..." min="5" max="300"required>minutes
                       </p>
                       <span id="timeError1" class="input-error"></span><br>
                       <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
@@ -117,14 +118,13 @@
                 <div class="Recherche">
                     <h1>Supprimer</h1>
                     <form id="form-findByDelete">
-                        <p>Réalisateur:</p>
-                      <input type="text" name="name" placeholder="Recherche..." >
+                      <p>Réalisateur:</p>
+                      <input type="text" name="name" placeholder="Recherche..." required>
                       <span id="nameError2" class="input-error"></span><br>
     
                       <p>Titre :</p>
-                      <input type="text" name="title" placeholder="Recherche...">
+                      <input type="text" name="title" placeholder="Recherche..."required>
                       <span id="titleError2" class="input-error"></span><br>
-                      <p>Genre :</p>
 
                         <input type="submit" id="All" value="recherche" onclick="callWriteDelete()">
                     </form>

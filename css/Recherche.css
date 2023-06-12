@@ -19,14 +19,6 @@
     
 }
 
-.Recherche{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-}
 
 h1 {
     text-align: center;
@@ -66,17 +58,8 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #14100c;
 }
-input[type="submit"]:focus {
-    outline: none;
-    border: 1px solid #14100c;
-}
-input[type="text"] {
-    width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #F6F3E5;
-    padding: 5px;
-}
+
+
 form p {
     font-size: 1.5rem;
     margin-bottom: 20px;
