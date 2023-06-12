@@ -39,18 +39,19 @@
                 <h1>Recherche</h1> 
 
                 <div id="formulaire">
+                    
                     <ul> 
                         <li>
                             <p>Rechercher par:</p>
                         </li>
                         <li>
-                            <a class="bouton" class="Realisateur" onclick="putRealisateur()">Realisateur</a>
+                            <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur(),activerBoutons() ">Realisateur</a>
                         </li>
                         <li>
-                            <a class="bouton" class="Titre" onclick="putTitre()">Titre</a>
+                            <a class="bouton Titre" id="titre" onclick="putTitre(),activerBoutons() ">Titre</a>
                         </li>
                         <li>
-                            <a class="bouton" class="Genre" onclick="putGenre()">Genre</a>
+                            <a class="bouton Genre" id="genre" onclick="putGenre(),activerBoutons() ">Genre</a>
                         </li>
                     </ul>
                     <form class="here" id="id" action="result.html">

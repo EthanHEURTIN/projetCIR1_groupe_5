@@ -464,7 +464,19 @@ function callWrite(){
     //print/////////////////////////////
   }
 }
-    
-
+function activerBoutons() {
+  const boutons = document.querySelectorAll('.bouton');
+  
+  for (let i = 0; i < boutons.length; i++) {
+    boutons[i].addEventListener('click', function() {
+      for (let j = 0; j < boutons.length; j++) {
+        if (boutons[j] !== this) {
+          boutons[j].classList.remove('active');
+        }
+      }
+      this.classList.add('active');
+    });
+  }
+}
   
 
