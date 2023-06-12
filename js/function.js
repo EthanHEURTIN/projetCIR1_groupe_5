@@ -53,6 +53,22 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, fu
   document.body.removeChild(element);
 }
 
+function writeFileAdd(formId1, formId2, formId3, formId4, func) {
+  var element = document.createElement('a');
+  let text1 = formId1;
+  let text2 = formId2;
+  let text3 = formId3;
+  let text4 = formId4;
+  let textToSave = func + ";" + text1 + ";" + text2 + ";" + text3 + ";" + text4;
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
+  element.setAttribute('download', 'request.txt');
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
 // -------------------------
 
 
@@ -130,16 +146,16 @@ function callWriteAll() {
 function callWriteAdd() {
   let values = separateFormInputs('form-findByAdd');
   let nameValue = values[0];
-  let request1 = "addDirector";
+  let request1 = "addMovie";
   console.log(nameValue);
   let titleValue = values[1];
-  let request2 = "addTitle";
+  
   console.log(titleValue);
   let typeValue = values[2];
-  let request3 = "addType";
+ 
   console.log(typeValue);
   let timeValue = values[3];
-  let request4 = "addTimer";
+
   console.log(timeValue);
   if (nameValue == "") {
     nameValue = "";
@@ -157,7 +173,7 @@ function callWriteAdd() {
     timeValue = "";
     request4 = "";
   } 
-  writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
+  writeFileAdd(nameValue, titleValue, typeValue, timeValue, request1);
 }
 
 // ------- READ FILE -------
@@ -382,5 +398,7 @@ function playMusic(genre) {
 
 
 
+function admin(){
 
+}
 
