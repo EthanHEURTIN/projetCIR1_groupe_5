@@ -30,36 +30,39 @@
 
 
     <div id="contenu">
-        <div class="Recherche">
-           <h1>Recherche</h1> 
-        </div>
-        
-        <div id="formulaire">
-            <form id="form-findByDirector" action="result.html">
-                <p>Director’s name :</p>
-                <input type="text" name="name"><br>
-                <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
-            </form>
+        <div class="div1">
+
+            <h1>Recherche</h1> 
             
-            <form id="form-findByTitle" action="result.html">
-                <p>Title :</p>
-                <input type="text" name="title"><br>
-                <input type="submit" id="title" value="recherche" onclick="callWriteTitle()">
-            </form>
-            <form id="form-findByType" action="result.html">
-                <p>Genre :</p>
-                <input type="text" name="type"><br>
-                <input type="submit" id="type" value="recherche" onclick="callWriteType()">
-            </form>
-            <form id="form-findByTimer" action="result.html">
-                <p>Recherche par durée :</p>
-                <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
-                <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
-            </form>
+            <div id="formulaire">
+                <form id="form-findByDirector" action="result.html">
+                    <p>Director’s name :</p>
+                    <input type="text" name="name"><br>
+                    <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
+                </form>
+
+                <form id="form-findByTitle" action="result.html">
+                    <p>Title :</p>
+                    <input type="text" name="title"><br>
+                    <input type="submit" id="title" value="recherche" onclick="callWriteTitle()">
+                </form>
+                <form id="form-findByType" action="result.html">
+                    <p>Genre :</p>
+                    <input type="text" name="type"><br>
+                    <input type="submit" id="type" value="recherche" onclick="callWriteType()">
+                </form>
+            </d         iv>
+            <div id="byTime">
+                <form id="form-findByTimer" action="result.html">
+                    <p>Recherche par durée :</p>
+                    <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                    <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
+                </form>
+            </div>
         </div>
 
-
-        <div class="Recherche">
+    
+        <div id="div1">
             <h1>Recherche Simultanée</h1>
             <form id="form-findByAll" action="result.html">
                 <p>Director’s name :</p>
@@ -71,7 +74,7 @@
                 <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
             </form>
         </div>
-
+    </div>
     
 </main>
 </body>

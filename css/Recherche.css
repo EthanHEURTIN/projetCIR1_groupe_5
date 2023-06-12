@@ -6,7 +6,6 @@
     align-items: center;
     margin-top: 4rem;
     margin-bottom: 4rem;
-    border: 4px solid #ccc;
 }
 
 h1 {
@@ -26,38 +25,58 @@ input {
     width: 300px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #ccc;
     padding: 5px;
-    color: black;
+    color:#292119 ;
 }
 input:focus {
     outline: none;
-    border: 1px solid #aaa;
+    border: 1px solid #713232;
 }
 input[type="submit"] {
     width: 100px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #292119;
     padding: 5px;
-    background-color: #ccc;
+    background-color: #292119;
     cursor: pointer;
+    color:#F6F3E5 ;
 }
 input[type="submit"]:hover {
-    background-color: #aaa;
+    background-color: #14100c;
 }
 input[type="submit"]:focus {
     outline: none;
-    border: 1px solid #aaa;
+    border: 1px solid #14100c;
 }
 input[type="text"] {
     width: 300px;
     height: 30px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #F6F3E5;
     padding: 5px;
 }
 form p {
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
+
+.div1 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #formulaire {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #formulaire form {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  #form-findByTimer {
+    width: 100%;
+    margin-top: 10px;
+  }
