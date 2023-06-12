@@ -208,9 +208,6 @@ function getURLParameter(name) {
   let urlParams = new URLSearchParams(queryString);
   return urlParams.get(name);
 }
-//avec la fonction getURLParameter on recupere les parametres de l'url s'éparer par des &
-//on recupere les parametres de l'url et on les affiches dans le paragraphe pp
-
 function rechercheDirector() {
   let nameValue = getURLParameter("name");
   return nameValue;
@@ -398,7 +395,12 @@ function playMusic(genre) {
 
 
 
-function admin(){
-
+function openModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
 }
 
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}

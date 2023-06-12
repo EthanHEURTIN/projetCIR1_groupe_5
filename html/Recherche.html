@@ -6,6 +6,7 @@
     <title>Recherchez</title>
     <link rel="stylesheet" href="../css/all.css">
     <link rel="stylesheet" href="../css/Recherche.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <script src="../js/function.js" defer></script>
     <script src="../js/test.js" defer></script>
     <script src="../js/main.js" defer></script>
@@ -25,14 +26,13 @@
                         <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
                     </li>
                     <li class="admin-button">
-                        <a onclick="admin()"><img src="../image/Admin.png" class="logonav" >Admin</a>
+                        <a onclick="openModal()"><img src="../image/Admin.png" class="logonav" >Admin</a>
                     </li>
                 </ul>
         </nav>
     </header>
 
-    <div id="add"></div>
-    <div id="delete"></div>
+    
     <div id="contenu">
         <div class="div1">
 
@@ -80,6 +80,49 @@
                 <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
             </form>
         </div>
+        
 </main>
+
+
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Modal Title</h2>
+            <div class="Recherche">
+                <h1>Ajouter</h1>
+                <form id="form-findByAdd">
+                    <p>Réalisateur:</p>
+                    <input type="text" name="name" placeholder="Recherche..."><br>
+                    <p>Titre :</p>
+                    <input type="text" name="title" placeholder="Recherche..."><br>
+                    <p>Genre :</p>
+                    <input type="text" name="type" placeholder="Recherche..."><br>
+                    <p>Durée :</p>
+                    <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
+                    <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+                </form>
+            </div>
+            <div class="Recherche">
+                <h1>delete</h1>
+                <form id="form-findByAdd">
+                    <p>Réalisateur:</p>
+                    <input type="text" name="name" placeholder="Recherche..."><br>
+                    <p>Titre :</p>
+                    <input type="text" name="title" placeholder="Recherche..."><br>
+                    <p>Genre :</p>
+                    <input type="text" name="type" placeholder="Recherche..."><br>
+                    <p>Durée :</p>
+                    <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
+                    <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </body>
 </html> 
