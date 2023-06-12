@@ -57,6 +57,7 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, fu
 
 
 
+
 function separateFormInputs(formId) {
   let form = document.getElementById(formId);
   let inputs = form.getElementsByTagName('input');
@@ -127,7 +128,37 @@ function callWriteAll() {
 }
 
 function callWriteAdd() {
-  let values = separateFormInputs('form-findByAll');
+  let values = separateFormInputs('form-findByAdd');
+  let nameValue = values[0];
+  let request1 = "addDirector";
+  console.log(nameValue);
+  let titleValue = values[1];
+  let request2 = "addTitle";
+  console.log(titleValue);
+  let typeValue = values[2];
+  let request3 = "addType";
+  console.log(typeValue);
+  let timeValue = values[3];
+  let request4 = "addTimer";
+  console.log(timeValue);
+  if (nameValue == "") {
+    nameValue = "";
+    request1 = "";
+  }
+  if (titleValue == "") {
+    titleValue = "";
+    request2 = "";
+  }
+  if (typeValue == "") {
+    typeValue = "";
+    request3 = "";
+  }
+  if (timeValue == "") {
+    timeValue = "";
+    request4 = "";
+  } 
+  writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
+}
 
 // ------- READ FILE -------
 function readFileByName(fileName){
