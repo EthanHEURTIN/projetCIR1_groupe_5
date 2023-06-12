@@ -12,116 +12,118 @@
     <script src="../js/main.js" defer></script>
 </head>
 
-<body>
-  <main>
-    <header>
-        <nav class="navbar">
-            <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
-            <nav class="nav-links">
-                <ul>
-                    <li>
-                        <a href="Accueil.html" ><img src="../image/Accueil.png" class="logonav">Accueil</a>
-                    </li>
-                    <li>
-                        <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
-                    </li>
-                    <li class="admin-button">
-                        <a onclick="openModal()"><img src="../image/Admin.png" class="logonav" >Admin</a>
-                    </li>
-                </ul>
-        </nav>
-    </header>
+    <body>
+      <main>
+        <header>
+            <nav class="navbar">
+                <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
+                <nav class="nav-links">
+                    <ul>
+                        <li>
+                            <a href="Accueil.html" ><img src="../image/Accueil.png" class="logonav">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
+                        </li>
+                        <li class="admin-button">
+                            <a onclick="openModal()"><img src="../image/Admin.png" class="logonav" >Admin</a>
+                        </li>
+                    </ul>
+            </nav>
+        </header>
 
-    
-    <div id="contenu">
-        <div class="div1">
 
-            <h1>Recherche</h1> 
-            
-            <div id="formulaire">
-                <ul> 
-                    <li>
-                        <p>Rechercher par:</p>
-                    </li>
-                    <li>
-                        <a class="bouton" onclick="putRealisateur()">Realisateur</a>
-                    </li>
-                    <li>
-                        <a class="bouton" onclick="putRealisateur()">Titre</a>
-                    </li>
-                    <li>
-                        <a class="bouton" onclick="putGenre()">Genre</a>
-                    </li>
-                </ul>
-                <form id="form-findByDirector" action="result.html">
-                   
-                    <input type="text" name="name"><br>
-                    <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
-                </form>
-                
+        <div id="contenu">
+            <div class="div1">
 
+                <h1>Recherche</h1> 
+
+                <div id="formulaire">
+                    <ul> 
+                        <li>
+                            <p>Rechercher par:</p>
+                        </li>
+                        <li>
+                            <a class="bouton" class="Realisateur" onclick="putRealisateur()">Realisateur</a>
+                        </li>
+                        <li>
+                            <a class="bouton" class="Titre" onclick="putTitre()">Titre</a>
+                        </li>
+                        <li>
+                            <a class="bouton" class="Genre" onclick="putGenre()">Genre</a>
+                        </li>
+                    </ul>
+                    <form class="here" id="id" action="result.html">
+                        <input type="text" id="searchType" name="name"><br>
+                        <input type="submit" id="tap" value="recherche" onclick="callWrite()">
+                    </form>
+
+
+                </div>
+                <div id="byTime">
+                    <form id="form-findByTimer" action="result.html">
+                        <p>Recherche par durée :</p>
+                        <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                        <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
+                    </form>
+                </div>
             </div>
-            <div id="byTime">
-                <form id="form-findByTimer" action="result.html">
-                    <p>Recherche par durée :</p>
-                    <p>Entre  <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="search" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
-                    <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
-                </form>
-            </div>
-        </div>
 
-    
-        <div id="div1">
-            <h1>Recherche Simultanée</h1>
-            <form id="form-findByAll" action="result.html">
-                <p>Director’s name :</p>
-                <input type="text" name="name" placeholder="Recherche..."><br>
-                <p>Title :</p>
-                <input type="text" name="title" placeholder="Recherche..."><br>
-                <p>Genre :</p>
-                <input type="text" name="type" placeholder="Recherche..."><br>
-                <p>Recherche par durée :</p>
-                <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
-                <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
-            </form>
-        </div>
         
-</main>
-
-
-
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Modal Title</h2>
-            <div class="Recherche">
-                <h1>Ajouter</h1>
-                <form id="form-findByAdd">
-                    <p>Réalisateur:</p>
+            <div id="div1">
+                <h1>Recherche Simultanée</h1>
+                <form id="form-findByAll" action="result.html">
+                    <p>Director’s name :</p>
                     <input type="text" name="name" placeholder="Recherche..."><br>
-                    <p>Titre :</p>
+                    <p>Title :</p>
                     <input type="text" name="title" placeholder="Recherche..."><br>
                     <p>Genre :</p>
                     <input type="text" name="type" placeholder="Recherche..."><br>
-                    <p>Durée :</p>
-                    <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
-                    <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+                    <p>Recherche par durée :</p>
+                    <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" > et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" > minutes</p>
+                    <input type="submit" id="All" value="recherche" onclick="callWriteAll()">
                 </form>
             </div>
-            <div class="Recherche">
-                <h1>delete</h1>
-                <form id="form-findByAdd">
-                    <p>Réalisateur:</p>
-                    <input type="text" name="name" placeholder="Recherche..."><br>
-                    <p>Titre :</p>
-                    <input type="text" name="title" placeholder="Recherche..."><br>
-                    <p>Genre :</p>
-                    <input type="text" name="type" placeholder="Recherche..."><br>
-                    <p>Durée :</p>
-                    <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
-                    <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
-                </form>
+
+        </main>
+
+
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Modal Title</h2>
+                <div class="Recherche">
+                    <h1>Ajouter</h1>
+                    <form id="form-findByAdd">
+                        <p>Réalisateur:</p>
+                        <input type="text" name="name" placeholder="Recherche..."><br>
+                        <p>Titre :</p>
+                        <input type="text" name="title" placeholder="Recherche..."><br>
+                        <p>Genre :</p>
+                        <input type="text" name="type" placeholder="Recherche..."><br>
+                        <p>Durée :</p>
+                        <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
+                        <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+                    </form>
+                </div>
+                <div class="Recherche">
+                    <h1>delete</h1>
+                    <form id="form-findByAdd">
+                        <p>Réalisateur:</p>
+                        <input type="text" name="name" placeholder="Recherche..."><br>
+                        <p>Titre :</p>
+                        <input type="text" name="title" placeholder="Recherche..."><br>
+                        <p>Genre :</p>
+                        <input type="text" name="type" placeholder="Recherche..."><br>
+                        <p>Durée :</p>
+                        <p><input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
+                        <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
+        </div>    
+    </body>
+
+</html>

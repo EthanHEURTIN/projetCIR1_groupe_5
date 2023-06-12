@@ -89,22 +89,17 @@ function separateFormInputs(formId) {
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
   writeFile("form-findByDirector", "findByDirector");
-
 }
 function callWriteTime() {//ecrit temp du film dans le fichier request.txt
-
   writeFile("form-findByTimer", "findByTimer");
 }
 
 function callWriteType() { //ecrit le genre de film dans le fichier request.txt
- writeFile("form-findByType", "findByType");
-  
-
+  writeFile("form-findByType", "findByType");
 }
 
 function callWriteTitle() {//ecrit le titre dans le fichier request.txt
   writeFile("form-findByTitle", "findByTitle");
-
 }
 function callWriteAll() {
   let values = separateFormInputs('form-findByAll');
@@ -404,3 +399,56 @@ function closeModal() {
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
 }
+
+
+function putRealisateur(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'name');
+  element.setAttribute('id', 'form-findByDirector');
+  element2.setAttribute('tap', 'Director');
+  const id = element.id;
+  console.log(id);
+}
+function putTitre(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'title');
+  element.setAttribute('id', 'form-findByTitle');
+  element2.setAttribute('tap', 'Title');
+}
+function putGenre(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'type');
+  element.setAttribute('id', 'form-findByType');
+  element2.setAttribute('tap', 'Type');
+}
+
+function callWrite(){
+  let element = document.querySelector('.here');
+  const id = element.id;
+  console.log(id)
+  if (id=='form-findByDirector'){
+    callWriteDirector()
+  }
+  if (id=='form-findByTitle'){
+    callWriteTitle()
+  }
+  if (id=='form-findByType'){
+    callWriteType()
+  }
+  if (id=="id"){
+    //print/////////////////////////////
+  }
+}
+    
+
+  
+
