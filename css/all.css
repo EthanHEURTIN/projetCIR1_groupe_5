@@ -61,7 +61,7 @@ header li a{
 }
 
 header li:hover{
-    background-color:#A0392C ;
+    background-color:#17120e ;
     color: #F6F3E5;
 }
 
@@ -87,5 +87,10 @@ header li img{
 
 body{
     background-color:#3A3D52;
+}
+
+h1{
+    font-size: 60px;
+    letter-spacing : 3px;;
 }
 
