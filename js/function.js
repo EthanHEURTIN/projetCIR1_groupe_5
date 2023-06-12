@@ -59,7 +59,21 @@ function writeFileAdd(formId1, formId2, formId3, formId4, func) {
   let text2 = formId2;
   let text3 = formId3;
   let text4 = formId4;
-  let textToSave = func + ";" + text1 + ";" + text2 + ";" + text3 + ";" + text4;
+  let textToSave = func;
+  if (text1 !== "") {
+    textToSave +=";" + text1;
+  }
+  if (text2 !== "") {
+    textToSave += ";" + text2;
+  }
+  if (text3 !== "") {
+    textToSave +=  ";" + text3;
+  }
+  if (text4 !== "") {
+    textToSave += ";" + text4 ;
+  }
+
+ 
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
   element.setAttribute('download', 'request.txt');
 
@@ -273,7 +287,7 @@ tempExecution(text);
 
 
 function creerTableauFilms(text) {
-  let boubou = 'realisateur'
+  let boubou = 'temp'
   let tableau = [];
   let lignes = text.split("\n");
   if (boubou == "realisateur") {
@@ -293,7 +307,8 @@ function creerTableauFilms(text) {
       let elements = lignes[i].split(";");
       film.realisateur = elements[0];
       film.titre = elements[1];
-      film.genre = elements[2];
+      film.duree = elements[2];
+      film.genre = elements[3];
       tableau.push(film);
     }
   }
@@ -330,7 +345,7 @@ console.log(tableauFilms);
 
 function afficherTableau(tableau) {
   let html = "<table>";
-  let boubou = 'realisateur'
+  let boubou = 'temp'
 
   if (boubou == "realisateur") {
     html += "<tr><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
@@ -345,12 +360,13 @@ function afficherTableau(tableau) {
   }
 
   if (boubou == "temp") {
-    html += "<tr><th>Realisateur</th><th>Titre</th><th>Genre</th></tr>";
+    html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
 
     for (let i = 0; i < tableau.length; i++) {
       html += "<tr>";
       html += "<td>" + tableau[i].realisateur + "</td>";
       html += "<td>" + tableau[i].titre + "</td>";
+      html += "<td>" + tableau[i].duree + " min </td>";
       html += "<td>" + tableau[i].genre + "</td>";
       html += "</tr>";
     }

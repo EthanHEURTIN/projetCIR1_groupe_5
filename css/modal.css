@@ -14,7 +14,7 @@
   }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgba(211, 211, 211, 0.808);
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -29,7 +29,7 @@
     margin-bottom: 20px;
     color: black;
 }
-.modal-content h2{
+.modal-content h1{
     text-align: center;
     font-size: 1.6rem;
     margin-bottom: 20px;
@@ -48,4 +48,20 @@
     text-decoration: none;
     cursor: pointer;
   }
-.
+.modal-content .Recherche{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+
+}
+.modal-content .Recherche form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    
