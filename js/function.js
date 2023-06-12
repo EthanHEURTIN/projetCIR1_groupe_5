@@ -126,6 +126,8 @@ function callWriteAll() {
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
 
+function callWriteAdd() {
+  let values = separateFormInputs('form-findByAll');
 
 // ------- READ FILE -------
 function readFileByName(fileName){
