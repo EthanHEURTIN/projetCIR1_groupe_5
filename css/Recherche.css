@@ -103,7 +103,7 @@ form p {
 .bouton {
     background-color: #292119; 
     border: none; 
-    color: white;
+    color: #F6F3E5;
     padding: 10px; 
     text-align: center; 
     text-decoration: none; 
@@ -127,4 +127,5 @@ form p {
 
 #formulaire ul p{
     font-size: 1.5rem;
+    margin-top: 7px;
 }
