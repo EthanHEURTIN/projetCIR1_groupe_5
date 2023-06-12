@@ -39,23 +39,28 @@
             <h1>Recherche</h1> 
             
             <div id="formulaire">
+                <ul> 
+                    <li>
+                        <p>Rechercher par:</p>
+                    </li>
+                    <li>
+                        <a class="bouton">Accueil</a>
+                    </li>
+                    <li>
+                        <a class="bouton">Recherche</a>
+                    </li>
+                    <li>
+                        <a class="bouton">Admin</a>
+                    </li>
+                </ul>
                 <form id="form-findByDirector" action="result.html">
-                    <p>Director’s name :</p>
+                   
                     <input type="text" name="name"><br>
                     <input type="submit" id="director" value="recherche" onclick="callWriteDirector()">
                 </form>
+                
 
-                <form id="form-findByTitle" action="result.html">
-                    <p>Title :</p>
-                    <input type="text" name="title"><br>
-                    <input type="submit" id="title" value="recherche" onclick="callWriteTitle()">
-                </form>
-                <form id="form-findByType" action="result.html">
-                    <p>Genre :</p>
-                    <input type="text" name="type"><br>
-                    <input type="submit" id="type" value="recherche" onclick="callWriteType()">
-                </form>
-            </d         iv>
+            </div>
             <div id="byTime">
                 <form id="form-findByTimer" action="result.html">
                     <p>Recherche par durée :</p>

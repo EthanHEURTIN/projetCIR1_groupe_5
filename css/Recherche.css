@@ -80,24 +80,51 @@ input[type="text"] {
 form p {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    margin: 0;
 }
+
 
 .div1 {
     display: flex;
     flex-direction: column;
-  }
+}
   
-  #formulaire {
-    display: flex;
-    flex-wrap: wrap;
-  }
   
-  #formulaire form {
+#formulaire form {
     flex-basis: 50%;
     box-sizing: border-box;
-    padding: 10px;
-  }
-  #form-findByTimer {
+   
+}
+#form-findByTimer {
     width: 100%;
     margin-top: 10px;
-  }
+}
+
+.bouton {
+    background-color: #292119; 
+    border: none; 
+    color: white;
+    padding: 10px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    border-radius: 5px; 
+    margin-bottom: 40px;   
+    cursor: pointer;
+}
+.bouton:hover{
+    background-color: #14100c;
+}
+
+#formulaire ul{
+    list-style-type : none;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+#formulaire ul p{
+    font-size: 1.5rem;
+}
