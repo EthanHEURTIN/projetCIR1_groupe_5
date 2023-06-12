@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <title> Accueil </title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/Recherche.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <script src="/js/function.js" defer></script>
     <script src="/js/test.js" defer></script>
     <script src="/js/main.js" defer></script>
@@ -53,5 +54,50 @@
 
     </div>
 </main>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="Recherche">
+            <h1>Ajouter</h1>
+            <form id="form-findByAdd">
+              <p>Réalisateur:</p>
+              <input type="text" name="name" placeholder="Recherche...">
+              <span id="nameError1" class="input-error"></span><br>
+              <p>Titre :</p>
+              <input type="text" name="title" placeholder="Recherche...">
+              <span id="titleError1" class="input-error"></span><br>
+              <p>Genre :</p>
+              <input type="text" name="type" placeholder="Recherche...">
+              <span id="typeError1" class="input-error"></span><br>
+              <p>Durée :</p>
+                <input type="number" name="time1" placeholder="Recherche..." min="5" max="300">minutes
+              </p>
+              <span id="timeError1" class="input-error"></span><br>
+              <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+            </form>
+        </div>
+        <div class="Recherche">
+            <h1>Supprimer</h1>
+            <form id="form-findByDelete">
+                <p>Réalisateur:</p>
+              <input type="text" name="name" placeholder="Recherche..." >
+              <span id="nameError2" class="input-error"></span><br>
+
+              <p>Titre :</p>
+              <input type="text" name="title" placeholder="Recherche...">
+              <span id="titleError2" class="input-error"></span><br>
+              <p>Genre :</p>
+
+              <input type="text" name="type" placeholder="Recherche...">
+              <span id="typeError2" class="input-error"></span><br>
+              <p>Durée :</p>
+                <input type="number" name="time1" placeholder="Recherche..." min="5" max="300">minutes
+              </p>
+              <span id="timeError2" class="input-error"></span><br>
+                <input type="submit" id="All" value="recherche" onclick="callWriteDelete()">
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
