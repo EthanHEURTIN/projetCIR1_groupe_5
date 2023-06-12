@@ -1,6 +1,6 @@
 // ------- WRITE FILE -------
 
- function writeFile(id_form,func) {
+function writeFile(id_form,func) {
 
   var element = document.createElement('a');
 
@@ -53,7 +53,7 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, fu
   document.body.removeChild(element);
 }
 
-function writeFileAdd(formId1, formId2, formId3, formId4, func) {
+function writeFileAddDelete(formId1, formId2, formId3, formId4, func) {
   var element = document.createElement('a');
   let text1 = formId1;
   let text2 = formId2;
@@ -102,18 +102,83 @@ function separateFormInputs(formId) {
 }
 
 function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
-  writeFile("form-findByDirector", "findByDirector");
+  callDirector=document.getElementById("form-findByDirector").value;
+  if (callDirector !== "") {
+    writeFile("form-findByDirector", "findByDirector");
+  }
+
 }
 function callWriteTime() {//ecrit temp du film dans le fichier request.txt
-  writeFile("form-findByTimer", "findByTimer");
+  callTime=document.getElementById("form-findByTime").value;
+  if (callTime !== "") {
+    writeFile("form-findByTime", "findByTimer");
+  }
 }
 
 function callWriteType() { //ecrit le genre de film dans le fichier request.txt
-  writeFile("form-findByType", "findByType");
+  callType=document.getElementById("form-findByType").value;
+  if(callType !== ""){
+    writeFile("form-findByType", "findByType");
+  }
+
 }
 
 function callWriteTitle() {//ecrit le titre dans le fichier request.txt
-  writeFile("form-findByTitle", "findByTitle");
+  callTitle=document.getElementById("form-findByTitle").value;
+  if (callTitle !== "") {
+    writeFile("form-findByTitle", "findByTitle");
+  }
+  else{
+    callTitle.setCustomValidity("entre un temps");
+  }
+
+}
+function putRealisateur(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'name');
+  element.setAttribute('id', 'form-findByDirector');
+  element2.setAttribute('tap', 'Director');
+  const id = element.id;
+  console.log(id);
+}
+function putTitre(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'title');
+  element.setAttribute('id', 'form-findByTitle');
+  element2.setAttribute('tap', 'Title');
+}
+function putGenre(){
+  let element=document.querySelector(".here");
+  let element2 = document.getElementById("tap");
+  let element3 =  document.getElementById("searchType");
+  let id3= element3.name;
+  element3.setAttribute(id3,'type');
+  element.setAttribute('id', 'form-findByType');
+  element2.setAttribute('tap', 'Type');
+}
+
+function callWrite(){
+  let element = document.querySelector('.here');
+  const id = element.id;
+  console.log(id)
+  if (id=='form-findByDirector'){
+    callWriteDirector()
+  }
+  if (id=='form-findByTitle'){
+    callWriteTitle()
+  }
+  if (id=='form-findByType'){
+    callWriteType()
+  }
+  if (id=="id"){
+    
+  }
 }
 function callWriteAll() {
   let values = separateFormInputs('form-findByAll');
@@ -153,6 +218,7 @@ function callWriteAll() {
 }
 
 function callWriteAdd() {
+  event.preventDefault();
   let values = separateFormInputs('form-findByAdd');
   let nameValue = values[0];
   let request1 = "addMovie";
@@ -166,24 +232,76 @@ function callWriteAdd() {
   let timeValue = values[3];
 
   console.log(timeValue);
-  if (nameValue == "") {
-    nameValue = "";
-    request1 = "";
+  if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
+    writeFileAddDelete(nameValue, titleValue, typeValue, timeValue, request1);
+    document.getElementById('nameError1').textContent = "";
+    document.getElementById('titleError1').textContent = "";
+    document.getElementById('typeError1').textContent = "";
+    document.getElementById('timeError1').textContent = "";
+    document.getElementById("form-findByAdd").reset();
+    document.getElementById("myModal").style.display = "block";
+
   }
-  if (titleValue == "") {
-    titleValue = "";
-    request2 = "";
+ else {
+  if (nameValue === "") {
+    document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
+    
   }
-  if (typeValue == "") {
-    typeValue = "";
-    request3 = "";
+  if (titleValue === "") {
+    document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
   }
-  if (timeValue == "") {
-    timeValue = "";
-    request4 = "";
-  } 
-  writeFileAdd(nameValue, titleValue, typeValue, timeValue, request1);
+  if (typeValue === "") {
+    document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
+  }
+  if (timeValue === "") {
+    document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
+  }
 }
+}
+
+function callWriteDelete() {
+  event.preventDefault();
+  let values = separateFormInputs('form-findByDelete');
+  let nameValue = values[0];
+  let request1 = "deleteMovie";
+  console.log(nameValue);
+  let titleValue = values[1];
+  
+  console.log(titleValue);
+  let typeValue = values[2];
+ 
+  console.log(typeValue);
+  let timeValue = values[3];
+
+  console.log(timeValue);
+  if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
+    writeFileAddDelete(nameValue, titleValue, typeValue, timeValue, request1);
+    document.getElementById('nameError2').textContent = "";
+    document.getElementById('titleError2').textContent = "";
+    document.getElementById('typeError2').textContent = "";
+    document.getElementById('timeError2').textContent = "";
+    document.getElementById("form-findByDelete").reset();
+    document.getElementById("myModal").style.display = "block";
+
+  }
+ else {
+  if (nameValue === "") {
+    document.getElementById('nameError2').textContent = "Veuillez remplir ce champ.";
+    
+  }
+  if (titleValue === "") {
+    document.getElementById('titleError2').textContent = "Veuillez remplir ce champ.";
+  }
+  if (typeValue === "") {
+    document.getElementById('typeError2').textContent = "Veuillez remplir ce champ.";
+  }
+  if (timeValue === "") {
+    document.getElementById('timeError2').textContent = "Veuillez remplir ce champ.";
+  }
+}
+}
+
+
 
 // ------- READ FILE -------
 function readFileByName(fileName){
@@ -211,12 +329,17 @@ function readFile(){
 
 
 let text = readFile();//recupere le fichier results.txt en un simple fichier txt
-
+function finderror(text) {
+  let error = text.split("\n")[0].split(";")[1];
+  alert(error);
+}
 function getURLParameter(name) {
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   return urlParams.get(name);
+
 }
+
 function rechercheDirector() {
   let nameValue = getURLParameter("name");
   return nameValue;
@@ -275,14 +398,45 @@ function tempExecution(text) {
 tempExecution(text);
 
 
+function hasNameParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.has("name");
+}
+  
+function hasTimeParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.has("time1");
+}
 
+function hasTypeParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.has("type");
+}
 
+function hasTitleParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.has("title");
+}
 
+function findhasParam() {
+  if (hasNameParam() == true) {
+    return "realisateur";
+  }
+  if (hasTimeParam() == true) {
+    return "temp";
+  }
+  if (hasTypeParam() == true) {
+    return "genre";
+  }
+  if (hasTitleParam() == true) {
+    return "titre";
+  }
+}
 
-
+console.log(findhasParam());
 
 function creerTableauFilms(text) {
-  let boubou = 'temp'
+  let boubou = findhasParam();
   let tableau = [];
   let lignes = text.split("\n");
   if (boubou == "realisateur") {
@@ -340,7 +494,7 @@ console.log(tableauFilms);
 
 function afficherTableau(tableau) {
   let html = "<table>";
-  let boubou = 'temp'
+  let boubou = findhasParam();
 
   if (boubou == "realisateur") {
     html += "<tr><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
@@ -393,59 +547,31 @@ function afficherTableau(tableau) {
 
   html += "</table>";
   document.getElementById("resultat").innerHTML = html;
+
 }
 afficherTableau(tableauFilms);
 
-function playMusic(genre) {
-    if (genre == "Western") {
-      let audio = new Audio('');
-      audio.play();
-    }
-
-}
-
-
 
 function openModal() {
-  var modal = document.getElementById("myModal");
-  modal.style.display = "block";
+  let pwd=prompt("Veuillez entrer le mot de passe:");
+  if(pwd=="leandrolpb"){
+    let modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  }
+  else{
+    alert("oue tu connais");
+  }
 }
 
 function closeModal() {
-  var modal = document.getElementById("myModal");
+  let modal = document.getElementById("myModal");
   modal.style.display = "none";
+  modal.reset();
 }
 
 
-function putRealisateur(){
-  let element=document.querySelector(".here");
-  let element2 = document.getElementById("tap");
-  let element3 =  document.getElementById("searchType");
-  let id3= element3.name;
-  element3.setAttribute(id3,'name');
-  element.setAttribute('id', 'form-findByDirector');
-  element2.setAttribute('tap', 'Director');
-  const id = element.id;
-  console.log(id);
-}
-function putTitre(){
-  let element=document.querySelector(".here");
-  let element2 = document.getElementById("tap");
-  let element3 =  document.getElementById("searchType");
-  let id3= element3.name;
-  element3.setAttribute(id3,'title');
-  element.setAttribute('id', 'form-findByTitle');
-  element2.setAttribute('tap', 'Title');
-}
-function putGenre(){
-  let element=document.querySelector(".here");
-  let element2 = document.getElementById("tap");
-  let element3 =  document.getElementById("searchType");
-  let id3= element3.name;
-  element3.setAttribute(id3,'type');
-  element.setAttribute('id', 'form-findByType');
-  element2.setAttribute('tap', 'Type');
-}
+
+
 
 function callWrite(){
   let element = document.querySelector('.here');
