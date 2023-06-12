@@ -228,17 +228,17 @@ function writeRecherche() {
 
   let text="";
   if (directorValue !== null&& directorValue !== "") {
-    text+="Le realisateur : " + directorValue;
+    text+=" realisateur " + directorValue;
   }
   if (titleValue !== null&& titleValue !== "") {
-    text +=  "Le titre du film : " + titleValue;
+    text +=  " titre du film " + titleValue;
   }
   if (typeValue !==  null && typeValue !== "") {
-    text += "Le genre du film : " + typeValue;
+    text += " genre du film " + typeValue;
   }
 
   if (timeValue !== null && timeValue2 !== null && timeValue !== "" && timeValue2 !== "") {
-    text += "La durée : " + timeValue + " min - " + timeValue2 + " min";
+    text += " durée : " + timeValue + " min - " + timeValue2 + " min";
   }
     
   document.getElementById("pp").innerHTML = text;
