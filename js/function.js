@@ -571,9 +571,11 @@ function closeModal() {
 
 
 
-
-
-    
-
+function loader(){//affiche le loader pendant 2 secondes
+    let loader = document.getElementsByClassName('loader');
+    setTimeout(function(){//après 2 secondes on enlève le loader
+        loader[0].style.display = 'none';
+    }, 2000);
+}
   
 
