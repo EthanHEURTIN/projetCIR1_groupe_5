@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="stylesheet" href="../css/Recherche.css">
+    <script src="../js/function.js" defer></script>
+    <script src="../js/test.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <header>
+        <nav class="navbar">
+            <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
+            <nav class="nav-links">
+                <ul>
+                    <li>
+                        <a href="Accueil.html" ><img src="../image/Accueil.png" class="logonav">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
+                    </li>
+                    <li class="admin-button">
+                        <a><img src="../image/Admin.png" class="logonav">Admin</button>
+                </ul>
+        </nav>
+    </header>
+    
+    <div class="Recherche">
+        <h1>Ajouter</h1>
+        <form id="form-findByAll">
+            <p>Director’s name :</p>
+            <input type="text" name="name" placeholder="Recherche..."><br>
+            <p>Title :</p>
+            <input type="text" name="title" placeholder="Recherche..."><br>
+            <p>Genre :</p>
+            <input type="text" name="type" placeholder="Recherche..."><br>
+            <p>Recherche par durée :</p>
+            <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" >minutes</p>
+            <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
+        </form>
+    </div>
+ </body>
+</html>
