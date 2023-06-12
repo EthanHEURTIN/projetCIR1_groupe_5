@@ -423,7 +423,7 @@ function findhasParam() {
     return "realisateur";
   }
   if (hasTimeParam() == true) {
-    return "duree";
+    return "temp";
   }
   if (hasTypeParam() == true) {
     return "genre";
@@ -436,7 +436,7 @@ function findhasParam() {
 console.log(findhasParam());
 
 function creerTableauFilms(text) {
-  let boubou = "temp"
+  let boubou = findhasParam();
   let tableau = [];
   let lignes = text.split("\n");
   if (boubou == "realisateur") {
@@ -494,7 +494,7 @@ console.log(tableauFilms);
 
 function afficherTableau(tableau) {
   let html = "<table>";
-  let boubou = "temp"
+  let boubou = findhasParam();
 
   if (boubou == "realisateur") {
     html += "<tr><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
