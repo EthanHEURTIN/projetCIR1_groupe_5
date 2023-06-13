@@ -590,20 +590,18 @@ function callWrite(){
 
   }
 }
-function activerBoutons() {
-  
-  const boutons = document.querySelectorAll('.bouton');
-  for (let i = 0; i < boutons.length; i++) {
-    boutons[i].addEventListener('click', function() {
-      for (let j = 0; j < boutons.length; j++) {
-        if (boutons[j] !== this) {
-          boutons[j].classList.remove('active');
-        }
-      }
-      this.classList.add('active');
-    });
-  }
-}
-activerBoutons();
-  
 
+
+function activerBoutons(boutonId) {
+  var boutons = document.getElementsByClassName('bouton'); // Récupérer tous les boutons
+  for (var i = 0; i < boutons.length; i++) {  // Parcourir tous les boutons
+    boutons[i].classList.remove('active');    // Supprimer la classe "active" de tous les boutons
+  }
+  var boutonClique = document.getElementById(boutonId);
+  boutonClique.classList.add('active'); // Ajouter la classe "active" au bouton cliqué
+}
+
+function activerSend(){
+  var boutonSend = document.getElementsByClassName("boutonSend")[0];
+  boutonSend.classList.remove('disabled');
+}

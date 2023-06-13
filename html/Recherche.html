@@ -46,18 +46,18 @@
                             <p>Rechercher par : </p>
                         </li>
                         <li>
-                            <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur(),activerBoutons() ">Realisateur</a>
+                            <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur();activerBoutons(this.id);activerSend();">Realisateur</a>
                         </li>
                         <li>
-                            <a class="bouton Titre" id="titre" onclick="putTitre(),activerBoutons() ">Titre</a>
+                            <a class="bouton Titre" id="titre" onclick="putTitre();activerBoutons(this.id);activerSend(); ">Titre</a>
                         </li>
                         <li>
-                            <a class="bouton Genre" id="genre" onclick="putGenre(),activerBoutons() ">Genre</a>
+                            <a class="bouton Genre" id="genre" onclick="putGenre();activerBoutons(this.id);activerSend(); ">Genre</a>
                         </li>
                     </ul>
                     <form class="here" id="id" action="result.html">
-                        <input type="text" id="searchType" name="name" placeholder="Recherche..." required><span class="validity"></span><br>
-                        <input type="submit" id="tap" value="recherche" onclick="callWrite()">
+                        <input type="text" id="searchType" name="name" placeholder="Recherche..." required oninput="activerSend();"><span class="validity"></span><br>
+                        <button type="submit" id="tap" class="boutonSend disabled" value="recherche" onclick="callWrite();">Envoyer</button>
                     </form>
 
                     <div id="error"></div>

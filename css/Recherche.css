@@ -97,7 +97,24 @@ form p {
     margin-bottom: 40px;   
     cursor: pointer;
 }
+button {
+    background-color: #292119; 
+    border: none; 
+    color: #F6F3E5;
+    padding: 10px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    border-radius: 5px; 
+    margin-bottom: 40px;   
+    cursor: pointer;
+}
 .bouton:hover{
+    background-color: #14100c;
+}
+button:hover{
     background-color: #14100c;
 }
 
@@ -113,6 +130,12 @@ form p {
     margin-top: 7px;
 }
 
-.bouton.active {
+.active {
     background-color: #0b0908;
 }
+
+.disabled {
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+
