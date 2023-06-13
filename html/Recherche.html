@@ -59,16 +59,15 @@
                             <a class="bouton Genre" id="genre" onclick="putGenre();activerBoutons(this.id);activerSend(); ">Genre</a>
                         </li>
                     </ul>
-                    <form class="here" id="id" action="result.html">
+                    <form class="here" id="id">
                         <input type="text" id="searchType" name="name" placeholder="Recherche..." required oninput="putImputOk()" ><span class="validity"></span><br>
                         <button type="submit" id="tap" class="boutonSend" value="recherche" onclick="callWrite();">Envoyer</button>
                     </form>
 
-                    <div id="error"></div>
                 </div>
                 
                 
-                    <form id="form-findByTime" action="result.html">
+                    <form id="form-findByTime">
                         <p>Recherche par durée :</p>
                         <p>Entre  <input type="number" name="time1" step="5" placeholder="Recherche..." min="5" max="300" required> et <input type="number" name="time2" step="5" placeholder="Recherche..." min="5" max="300" required> minutes</p>
                         <input type="submit" id="time" value="recherche" onclick="callWriteTime()">   
@@ -79,7 +78,7 @@
         
             <div id="div1">
                 <h1>Recherche Simultanée</h1>
-                <form id="form-findByAll" action="result.html">
+                <form id="form-findByAll">
                     <p>Director’s name :</p>
                     <input type="text" name="name" placeholder="Recherche..."><br>
                     <p>Title :</p>
@@ -119,21 +118,22 @@
                       <input type="submit" id="All" value="recherche" onclick="callWriteAdd()">
                     </form>
                 </div>
-                <div class="Recherche">
-                    <h1>Supprimer</h1>
-                    <form id="form-findByDelete">
-                      <p>Réalisateur:</p>
-                      <input type="text" name="name" placeholder="Recherche..." required>
-                      <span id="nameError2" class="input-error"></span><br>
-    
-                      <p>Titre :</p>
-                      <input type="text" name="title" placeholder="Recherche..."required>
-                      <span id="titleError2" class="input-error"></span><br>
 
-                        <input type="submit" id="All" value="recherche" onclick="callWriteDelete()">
-                    </form>
-                </div>
             </div>
         </div>
+        <div id="bettermust">
+            <div id="best">
+                <h1>Le réalisateur avec le plus de film</h1>
+                <input type="submit"  onclick="callWriteBest()"></input>
+                <div id="bestreal"></div>
+            </div>
+            <div id="worst">
+                <h1>Le réalisateur avec le moins de film</h1>
+                <input type="submit"  onclick="callWriteWorst()"></input>
+                <div id="worstreal"></div>
+
+            </div>
+        </div>
+      
 
 </html>

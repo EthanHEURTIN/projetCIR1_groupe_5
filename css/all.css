@@ -35,10 +35,12 @@ a{
 }
 .navbar .logonav{
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .navbar .logoOn{
     margin-right: 0px;
+    cursor: pointer;
 }
 header{
     background-color: rgb(220, 220, 220);

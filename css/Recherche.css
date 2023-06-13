@@ -116,9 +116,6 @@ button {
 .bouton:hover{
     background-color: #14100c;
 }
-button:hover{
-    background-color: #14100c;
-}
 
 #formulaire ul{
     list-style-type : none;
@@ -166,3 +163,46 @@ button:hover{
     color: #26b72b;
 }
 
+
+
+#bettermust {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#best, #worst {
+  width: 45%;
+  padding: 20px;
+
+  border-radius: 5px;
+}
+#bestreal, #worstreal {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+ 
+#bettermust input[type="submit"]{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #292119;
+    padding: 5px;
+    background-color: #292119;
+    cursor: pointer;
+    color:#F6F3E5 ;
+  }
+  
+#bettermust  button:hover {
+    background-color: #14100c;
+  }
+#bettermust p {
+    font-size: 1.4rem;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+  
+  
+  
+  

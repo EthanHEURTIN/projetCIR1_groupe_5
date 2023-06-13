@@ -1,3 +1,5 @@
+
+
 // ------- WRITE FILE -------
 
 function writeFile(id_form,func) {
@@ -42,16 +44,31 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, fu
   let textToSave = "";
 
   if (text1 !== "") {
-    textToSave += func1 + ";" + text1 + "\n";
+    if(text2 ==""){
+      textToSave += func1 + ";" + text1;
+    }
+    else {
+      textToSave += func1 + ";" + text1 + "\n";
+    }
   }
   if (text2 !== "") {
-    textToSave += func2 + ";" + text2 + "\n";
+    if(text3 == ""){
+      textToSave += func2 + ";" + text2;
+    }
+    else {
+      textToSave += func2 + ";" + text2 + "\n";
+    }
   }
   if (text3 !== "") {
-    textToSave += func3 + ";" + text3 + "\n";
+    if(text4 == ""){
+      textToSave += func3 + ";" + text3;
+    }
+    else {
+      textToSave += func3 + ";" + text3 + "\n";
+    }
   }
   if (text4 !== "") {
-    textToSave += func4 + ";" + text4 + "\n";
+    textToSave += func4 + ";" + text4;
   }
 
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
@@ -100,6 +117,7 @@ function callWriteDirector() {
   let callDirector = document.getElementById("form-findByDirector").value;
   if (callDirector != "") {
     writeFile("form-findByDirector", "findByDirector");
+    window.open("result.html?name="+callDirector);
   }
 }
 
@@ -109,6 +127,7 @@ function callWriteTime() {
 
   if (callTime1 != "" && callTime2 != "") {
     writeFile("form-findByTime", "findByTime");
+    window.open("result.html?time1=" + callTime1 + "&time2=" + callTime2);
   } 
 }
 
@@ -116,6 +135,7 @@ function callWriteType() {
   let callType = document.getElementById("form-findByType").value;
   if(callType!=""){
     writeFile("form-findByType", "findByType");
+    window.open("result.html?type=" + document.getElementById("form-findByType").value);
   } 
 }
 
@@ -123,6 +143,7 @@ function callWriteTitle() {
   let callTitle = document.getElementById("form-findByTitle").value;
   if(callTitle!=""){
     writeFile("form-findByTitle", "findByTitle");
+    window.open("result.html?title=" + callTitle);
   }
 }
 
@@ -163,6 +184,7 @@ function callWrite() {
   console.log(id)
   if (id=='form-findByDirector'){
     callWriteDirector()
+    
   }
   if (id=='form-findByTitle'){
     callWriteTitle()
@@ -189,7 +211,7 @@ function callWriteAll() {
   let timeValuemin = values[3];
   let timeValuemax = values[4];
   let timeValue = timeValuemin + ";" + timeValuemax;
-  let request4 = "findByTimer";
+  let request4 = "findByTime";
   console.log(timeValue);
   if (nameValue == ""||isNaN(nameValue) == false) {
     nameValue = "";
@@ -211,9 +233,9 @@ function callWriteAll() {
     alert("Veuillez remplir au moins un champ");
     event.preventDefault();
     return;
-    event.preventDefault();
   }
-
+  //dirige vers la page de result.html
+  window.location.href = "result.html?name=" + nameValue + "&title=" + titleValue + "&type=" + typeValue + "&time1=" + timeValuemin + "&time2=" + timeValuemax;
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
 
@@ -288,18 +310,7 @@ function readFile(){
 }
 // -------------------------
 
-//supprime le ready.txt
-function remove(){
-    var myObject;
-    myObject = new ActiveXObject("Scripting.FileSystemObject");
-    var f = myObject.GetFile("c:\\ready.txt");
-    f.Delete();
-}
 
-
-
-
-let text = readFile();//recupere le fichier results.txt en un simple fichier txt
 
 
 
@@ -311,8 +322,12 @@ function getURLParameter(name) {
 }
 
 function rechercheDirector() {
-  let nameValue = getURLParameter("name");
-  return nameValue;
+  let text = readFile();
+  let firstDirector1 = text.split("\n");
+  let firstDirector2 = firstDirector1[1];
+  let firstDirector3 = firstDirector2.split(";");
+  let firstDirector4 = firstDirector3[0];
+  return firstDirector4;
 }
 
 function rechercheTime() {
@@ -322,57 +337,64 @@ function rechercheTime() {
   return timeValue;
 }
 
-
 function rechercheType() {
-  let typeValue = getURLParameter("type");
-  return typeValue;
+  let text = readFile();
+  let firstDirector1 = text.split("\n");
+  let firstDirector2 = firstDirector1[1];
+  let firstDirector3 = firstDirector2.split(";");
+  let firstDirector4 = firstDirector3[3];
+  return firstDirector4;
 }
 
 function rechercheTitle() {
-  let titleValue = getURLParameter("title");
-  return titleValue;
+  let text = readFile();
+  let firstDirector1 = text.split("\n");
+  let firstDirector2 = firstDirector1[1];
+  let firstDirector3 = firstDirector2.split(";");
+  let firstDirector4 = firstDirector3[1];
+  return firstDirector4;
 }
-
 
 function writeRecherche() {
   let directorValue = rechercheDirector();
+  let titleValue = rechercheTitle();
+  let typeValue = rechercheType();
   let timeValue = rechercheTime()[0];
   let timeValue2 = rechercheTime()[1];
-  let typeValue = rechercheType();
-  let titleValue = rechercheTitle();
 
-  let text="";
-  if (directorValue !== null&& directorValue !== "") {
-    text+=" realisateur " + directorValue;
+  let text = "";
+  if (findHasParam() === "realisateur") {
+    text += "Réalisateur : " + directorValue;
   }
-  if (titleValue !== null&& titleValue !== "") {
-    text +=  " titre du film " + titleValue;
+  if (findHasParam() === "titre") {
+    text += "Titre du film : " + titleValue;
   }
-  if (typeValue !==  null && typeValue !== "") {
-    text += " genre du film " + typeValue;
+  if (findHasParam() === "genre") {
+    text += "Genre du film : " + typeValue;
   }
 
   if (timeValue !== null && timeValue2 !== null && timeValue !== "" && timeValue2 !== "") {
-    text += " durée : " + timeValue + " min - " + timeValue2 + " min";
+    text += "Durée : " + timeValue + " min - " + timeValue2 + " min";
   }
-    
-  document.getElementById("pp").innerHTML = text;
 
+  document.getElementById("pp").innerHTML = text;
 }
+
 writeRecherche();
 
-function tempExecution(text) {
+function tempExecution() {
+  let text = readFile();
   let tmpData = text.split("\n")[0].split(";")[0];
   document.getElementById("tmpData").innerHTML = "Temps d'exécution : " + tmpData + " ms";
 }
-tempExecution(text);
 
+tempExecution();
 
 function hasNameParam() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.has("name");
 }
-  
+
 function hasTimeParam() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.has("time1");
@@ -380,7 +402,7 @@ function hasTimeParam() {
 
 function hasTypeParam() {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.has("type");
+  return urlParams.has("genre");
 }
 
 function hasTitleParam() {
@@ -388,24 +410,25 @@ function hasTitleParam() {
   return urlParams.has("title");
 }
 
-function findhasParam() {
-  if (hasNameParam() == true) {
+function findHasParam() {
+  if (hasNameParam()) {
     return "realisateur";
   }
-  if (hasTimeParam() == true) {
+  if (hasTimeParam()) {
     return "temp";
   }
-  if (hasTypeParam() == true) {
+  if (hasTypeParam()) {
     return "genre";
   }
-  if (hasTitleParam() == true) {
+  if (hasTitleParam()) {
     return "titre";
   }
 }
 
 console.log(findhasParam());
 
-function creerTableauFilms(text) {
+function creerTableauFilms() {
+  let text = readFile();
   let boubou = findhasParam();
   let tableau = [];
   let lignes = text.split("\n");
@@ -413,9 +436,10 @@ function creerTableauFilms(text) {
     for (let i = 1; i < lignes.length; i++) {
       let film = {};
       let elements = lignes[i].split(";");
-      film.titre = elements[0];
-      film.duree = elements[1];
-      film.genre = elements[2];
+      film.realisateur = elements[0];
+      film.titre = elements[1];
+      film.duree = elements[2];
+      film.genre = elements[3];
       tableau.push(film);
     
     }
@@ -438,6 +462,7 @@ function creerTableauFilms(text) {
       film.realisateur = elements[0];
       film.titre = elements[1];
       film.duree = elements[2];
+      film.genre = elements[3];
       tableau.push(film);
     }
   }
@@ -446,15 +471,16 @@ function creerTableauFilms(text) {
       let film = {};
       let elements = lignes[i].split(";");
       film.realisateur = elements[0];
-      film.duree = elements[1];
-      film.genre = elements[2];
+      film.titre = elements[1];
+      film.duree = elements[2];
+      film.genre = elements[3];
       tableau.push(film);
     }
   }
   return tableau;
 }
 
-let tableauFilms = creerTableauFilms(text);
+let tableauFilms = creerTableauFilms();
 console.log(tableauFilms);
 
 
@@ -467,10 +493,11 @@ function afficherTableau(tableau) {
   let boubou = findhasParam();
 
   if (boubou == "realisateur") {
-    html += "<tr><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
+    html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
 
     for (let i = 0; i < tableau.length; i++) {
       html += "<tr>";
+      html += "<td>" + tableau[i].realisateur + "</td>";
       html += "<td>" + tableau[i].titre + "</td>";
       html += "<td>" + tableau[i].duree + " min </td>";
       html += "<td>" + tableau[i].genre + "</td>";
@@ -492,24 +519,26 @@ function afficherTableau(tableau) {
   }
 
   if (boubou == "genre") {
-    html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th></tr>";
+    html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
 
     for (let i = 0; i < tableau.length; i++) {
       html += "<tr>";
       html += "<td>" + tableau[i].realisateur + "</td>";
       html += "<td>" + tableau[i].titre + "</td>";
-      html += "<td>" + tableau[i].duree + "</td>";
+      html += "<td>" + tableau[i].duree + " min </td>";
+      html += "<td>" + tableau[i].genre + "</td>";
       html += "</tr>";
     }
   }
 
   if (boubou == "titre") {
-    html += "<tr><th>Realisateur</th><th>Durée</th><th>Genre</th></tr>";
+    html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
 
     for (let i = 0; i < tableau.length; i++) {
       html += "<tr>";
       html += "<td>" + tableau[i].realisateur + "</td>";
-      html += "<td>" + tableau[i].duree + "</td>";
+      html += "<td>" + tableau[i].titre + "</td>";
+      html += "<td>" + tableau[i].duree + " min </td>";
       html += "<td>" + tableau[i].genre + "</td>";
       html += "</tr>";
     }
@@ -591,17 +620,21 @@ function inRead(){
   let text2=text.split("\n")[0];
   console.log(text2);
   if(text2=="addWithSuccess"){
-    alert("film ajouté avec succès");
+    alert("Le film a été ajouté avec succès !");
   }
+  /*
   if(text2=="delWithSuccess"){
     alert("film supprimé avec succès");
   }
+  */
   if(text2=="alreadyExist"){
-    alert("film déjà existant");
+    alert("Le film est déjà existant !");
   }
+  /*
   if(text2=="doesntExist"){
     alert("film inexistant");
   }
+  */
 }
 
 function etatMachine() {
@@ -610,6 +643,18 @@ function etatMachine() {
   let text2 = text.split("\n")[0];
   console.log(text2);
   if (text2 == "stopWithSuccess") {
-    alert("programme arrêté");
+    alert("Le programme s'est arrêté !");
   }
 }
+
+function callWriteBest(){
+  writeRequetBestWorst("dataDirectors","max");
+  document.getElementById("bestreal").innerHTML="<p>Le realisateur qui a fait le plus de film est : "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" films </p>";
+  
+
+}
+function callWriteWorst(){
+  writeRequetBestWorst("dataDirectors","min");
+  document.getElementById("worstreal").innerHTML="<p>Le realisateur qui a fait le moins de film est : "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" films </p>";
+}
+
