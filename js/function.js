@@ -608,9 +608,17 @@ function activerSend(){
   boutonSend.classList.add('typeOk');
 }
 
-function putImputOk(){
+
+function putImputOk() {
+  var input = document.getElementById("searchType");
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
-  boutonSend.classList.add('imputOk');
+
+  if (input.value.trim() !== "") {
+    boutonSend.classList.add('imputOk');
+  } else {
+    boutonSend.classList.remove('imputOk');
+  }
+  
 }
 
 function inRead(){
