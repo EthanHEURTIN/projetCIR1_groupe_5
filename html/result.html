@@ -40,6 +40,15 @@
     
     <div id="resultat">
    </div>
+   <div id="pagination">
+    <label for="page">Page:</label>
+    <select name="page" id="page" onchange="if(this.value === 'next') pageSuivante();">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <!-- Ajoutez d'autres options de page selon vos besoins -->
+      <option value="next">Page suivante</option>
+    </select>
+  </div>
    <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
