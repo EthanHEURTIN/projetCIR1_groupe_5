@@ -20,6 +20,17 @@ function writeFile(id_form,func) {
 
  // text1.submit();
 }
+function writeRequetOff(func){
+  var element = document.createElement('a');
+  let textToSave = func;
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));//encodage du fichier
+  element.setAttribute('download', 'request.txt');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
 function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, func4) {
   var element = document.createElement('a');
 
@@ -628,4 +639,9 @@ function etatMachine() {
   if (text2 == "stopWithSuccess") {
     alert("programme arrêté");
   }
+}
+
+function pageSuivante() {
+  currentPage++;
+  afficherTableau(tableauDeDonnees); 
 }
