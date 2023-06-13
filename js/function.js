@@ -210,7 +210,9 @@ function callWriteAll() {
   }
   if(nameValue==""&&titleValue==""&&typeValue==""&&timeValue==""){
     alert("Veuillez remplir au moins un champ");
+    event.preventDefault();
     return;
+    event.preventDefault();
   }
 
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
@@ -290,13 +292,9 @@ function callWriteDelete() {
     if (titleValue === ""||isNaN(titleValue) == false) {
       document.getElementById('titleError2').textContent = "Veuillez remplir ce champ.";
     }
-  }
-  let text=readFile();
-  if(text=="addWithSuccess"){
-    alert("opération impossible film inexistant");
-  }
-}
 
+}
+}
 
 // ------- READ FILE -------
 function readFileByName(fileName){
