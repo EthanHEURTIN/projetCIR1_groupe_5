@@ -220,7 +220,7 @@ function callWriteAdd() {
   event.preventDefault();
   let values = separateFormInputs('form-findByAdd');
   let nameValue = values[0];
-  let request1 = "addMovie";
+  let request1 = "addFilm";
   console.log(nameValue);
   let titleValue = values[1];
   
@@ -229,8 +229,9 @@ function callWriteAdd() {
  
   console.log(typeValue);
   let timeValue = values[3];
-
+  
   console.log(timeValue);
+  
   if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
     writeFileAdd(nameValue, titleValue, timeValue, typeValue, request1);
     document.getElementById('nameError1').textContent = "";
@@ -239,29 +240,28 @@ function callWriteAdd() {
     document.getElementById('timeError1').textContent = "";
     document.getElementById("form-findByAdd").reset();
     document.getElementById("myModal").style.display = "block";
+    inRead();
 
   }
- else {
+
+  else {
   
-  if (nameValue === ""||isNaN(nameValue) == false) {
-    document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
+    if (nameValue === ""||isNaN(nameValue) == false) {
+      document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
+      
+    }
+    if (titleValue === "" ||isNaN(titleValue) == false) {
+      document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
+    }
+    if (typeValue === "" ||isNaN(typeValue) == false) {
+      document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
+    }
+    if (timeValue === "" ||isNaN(timeValue) == false) {
+      document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
+    }
     
   }
-  if (titleValue === "" ||isNaN(titleValue) == false) {
-    document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
-  }
-  if (typeValue === "" ||isNaN(typeValue) == false) {
-    document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
-  }
-  if (timeValue === "" ||isNaN(timeValue) == false) {
-    document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
-  }
-    
-  }
-  let text=readFile();
-  if(text==""){
-    alert("opération impossible film deja existant");
-  }
+
 }
 
 
@@ -269,7 +269,7 @@ function callWriteDelete() {
   event.preventDefault();
   let values = separateFormInputs('form-findByDelete');
   let nameValue = values[0];
-  let request1 = "deleteMovie";
+  let request1 = "deleteFilm";
   console.log(nameValue);
   let titleValue = values[1];
   console.log(titleValue);
@@ -279,6 +279,7 @@ function callWriteDelete() {
     document.getElementById('titleError2').textContent = "";
     document.getElementById("form-findByDelete").reset();
     document.getElementById("myModal").style.display = "block";
+    inRead();
 
   }
  else {
@@ -291,11 +292,10 @@ function callWriteDelete() {
     }
   }
   let text=readFile();
-  if(text==""){
+  if(text=="addWithSuccess"){
     alert("opération impossible film inexistant");
   }
 }
-
 
 
 // ------- READ FILE -------
@@ -603,3 +603,71 @@ function putImputOk(){
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
   boutonSend.classList.add('imputOk');
 }
+
+function inRead(){
+  let text=readFile();
+  let text2=text.split("\n")[0];
+  console.log(text2);
+  if(text2=="addWithSuccess"){
+    alert("film ajouté avec succès");
+  }
+  if(text2=="delWithSuccess"){
+    alert("film supprimé avec succès");
+  }
+  if(text2=="alreadyExist"){
+    alert("film déjà existant");
+  }
+  if(text2=="doesntExist"){
+    alert("film inexistant");
+  }
+}
+
+function etatMachine() {
+  writeRequetOff("stopProgram");
+  let text = readFile();
+  let text2 = text.split("\n")[0];
+  console.log(text2);
+  if (text2 == "stopWithSuccess") {
+    alert("programme arrêté");
+  }
+}
+function activerSend(){
+  var boutonSend = document.getElementsByClassName("boutonSend")[0];
+  boutonSend.classList.add('typeOk');
+}
+
+function putImputOk(){
+  var boutonSend = document.getElementsByClassName("boutonSend")[0];
+  boutonSend.classList.add('imputOk');
+}
+
+function inRead(){
+  let text=readFile();
+  let text2=text.split("\n")[0];
+  console.log(text2);
+  if(text2=="addWithSuccess"){
+    alert("film ajouté avec succès");
+  }
+  if(text2=="delWithSuccess"){
+    alert("film supprimé avec succès");
+  }
+  if(text2=="alreadyExist"){
+    alert("film déjà existant");
+  }
+  if(text2=="doesntExist"){
+    alert("film inexistant");
+  }
+}
+
+function etatMachine() {
+  writeRequetOff("stopProgram");
+  let text = readFile();
+  let text2 = text.split("\n")[0];
+  console.log(text2);
+  if (text2 == "stopWithSuccess") {
+    alert("programme arrêté");
+  }
+}
+
+
+

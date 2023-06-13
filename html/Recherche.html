@@ -18,6 +18,7 @@
         <header>
             <nav class="navbar">
                 <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
+                
                 <nav class="nav-links">
                     <ul>
                         <li>
@@ -28,6 +29,9 @@
                         </li>
                         <li class="admin-button">
                             <a onclick="openModal()"><img src="../image/Admin.png" class="logonav" >Admin</a>
+                        </li>
+                        <li>
+                            <a onclick="etatMachine()"><img src="../image/Resultat.png" class="logonav"></a>
                         </li>
                     </ul>
             </nav>
@@ -77,9 +81,9 @@
                 <h1>Recherche Simultanée</h1>
                 <form id="form-findByAll" action="result.html">
                     <p>Director’s name :</p>
-                    <input type="text" name="name" placeholder="Recherche..."  pattern="[A-Za-z]"><br>
+                    <input type="text" name="name" placeholder="Recherche..."  pattern="[a-z]"><br>
                     <p>Title :</p>
-                    <input type="text" name="title" placeholder="Recherche..."  pattern="[A-Za-z]"><br>
+                    <input type="text" name="title" placeholder="Recherche..."  pattern="[a-z]]"><br>
                     <p>Genre :</p>
                     <input type="text" name="type" placeholder="Recherche..."  pattern="[a-z]"><br>
                     <p>Recherche par durée :</p>
