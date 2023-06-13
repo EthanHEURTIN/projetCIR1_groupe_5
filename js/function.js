@@ -210,6 +210,7 @@ function callWriteAll() {
   }
   if(nameValue==""&&titleValue==""&&typeValue==""&&timeValue==""){
     alert("Veuillez remplir au moins un champ");
+    event.preventDefault();
     return;
     event.preventDefault();
   }
