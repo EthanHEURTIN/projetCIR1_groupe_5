@@ -212,6 +212,7 @@ function callWriteAll() {
     alert("Veuillez remplir au moins un champ");
     return;
   }
+  window.location="result.html";
 
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
@@ -220,7 +221,7 @@ function callWriteAdd() {
   event.preventDefault();
   let values = separateFormInputs('form-findByAdd');
   let nameValue = values[0];
-  let request1 = "addMovie";
+  let request1 = "addFilm";
   console.log(nameValue);
   let titleValue = values[1];
   
@@ -229,8 +230,9 @@ function callWriteAdd() {
  
   console.log(typeValue);
   let timeValue = values[3];
-
+  
   console.log(timeValue);
+  
   if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
     writeFileAdd(nameValue, titleValue, timeValue, typeValue, request1);
     document.getElementById('nameError1').textContent = "";
@@ -240,6 +242,14 @@ function callWriteAdd() {
     document.getElementById("form-findByAdd").reset();
     document.getElementById("myModal").style.display = "block";
 
+  }
+  let r = readFile();
+  if(r = "alreadyExist"){
+    alert("opération impossible film déjà existant");
+  }
+  }
+  if(r = "addWithSuccess"){
+    alert("opération realisée avec successe !!!!");
   }
  else {
   
@@ -257,11 +267,8 @@ function callWriteAdd() {
     document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
   }
     
-  }
-  let text=readFile();
-  if(text==""){
-    alert("opération impossible film deja existant");
-  }
+
+
 }
 
 
@@ -269,7 +276,7 @@ function callWriteDelete() {
   event.preventDefault();
   let values = separateFormInputs('form-findByDelete');
   let nameValue = values[0];
-  let request1 = "deleteMovie";
+  let request1 = "deleteFilm";
   console.log(nameValue);
   let titleValue = values[1];
   console.log(titleValue);
@@ -291,7 +298,7 @@ function callWriteDelete() {
     }
   }
   let text=readFile();
-  if(text==""){
+  if(text=="addWithSuccess"){
     alert("opération impossible film inexistant");
   }
 }
