@@ -32,6 +32,16 @@ function writeRequetOff(func){
   element.click();
   document.body.removeChild(element);
 }
+function writeRequetBestWorst(func,func2){
+  var element = document.createElement('a');
+  let textToSave = func+";"+func2;
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));//encodage du fichier
+  element.setAttribute('download', 'request.txt');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
 
 function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, func4) {
   var element = document.createElement('a');
@@ -117,7 +127,10 @@ function callWriteDirector() {
   let callDirector = document.getElementById("form-findByDirector").value;
   if (callDirector != "") {
     writeFile("form-findByDirector", "findByDirector");
-    window.open("result.html?name="+callDirector);
+    
+    window.open("result.html?name=");
+
+    
   }
 }
 
@@ -143,7 +156,7 @@ function callWriteTitle() {
   let callTitle = document.getElementById("form-findByTitle").value;
   if(callTitle!=""){
     writeFile("form-findByTitle", "findByTitle");
-    window.open("result.html?title=" + callTitle);
+    window.open("result.html?title=" );
   }
 }
 
@@ -425,11 +438,11 @@ function findHasParam() {
   }
 }
 
-console.log(findhasParam());
+console.log(findHasParam());
 
 function creerTableauFilms() {
   let text = readFile();
-  let boubou = findhasParam();
+  let boubou = findHasParam();
   let tableau = [];
   let lignes = text.split("\n");
   if (boubou == "realisateur") {
@@ -490,7 +503,7 @@ console.log(tableauFilms);
 
 function afficherTableau(tableau) {
   let html = "<table>";
-  let boubou = findhasParam();
+  let boubou = findHasParam();
 
   if (boubou == "realisateur") {
     html += "<tr><th>Realisateur</th><th>Titre</th><th>Durée</th><th>Genre</th></tr>";
@@ -649,12 +662,12 @@ function etatMachine() {
 
 function callWriteBest(){
   writeRequetBestWorst("dataDirectors","max");
-  document.getElementById("bestreal").innerHTML="<p>Le realisateur qui a fait le plus de film est : "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" films </p>";
+  document.getElementById("bestreal").innerHTML="<p>Le realisateur qui a fait le plus de film est "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" film(s). </p>";
   
 
 }
 function callWriteWorst(){
   writeRequetBestWorst("dataDirectors","min");
-  document.getElementById("worstreal").innerHTML="<p>Le realisateur qui a fait le moins de film est : "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" films </p>";
+  document.getElementById("worstreal").innerHTML="<p>Le realisateur qui a fait le moins de film est "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" film(s). </p>";
 }
 

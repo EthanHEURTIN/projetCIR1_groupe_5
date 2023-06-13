@@ -97,7 +97,7 @@ form p {
     margin-bottom: 40px;   
     cursor: pointer;
 }
-button {
+.div1 button {
     background-color: #292119; 
     border: none; 
     color: #F6F3E5;
@@ -114,6 +114,9 @@ button {
     pointer-events: none;
 }
 .bouton:hover{
+    background-color: #14100c;
+}
+button:hover{
     background-color: #14100c;
 }
 
@@ -182,15 +185,14 @@ button {
     font-size: 16px;
   }
  
-#bettermust input[type="submit"]{
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #292119;
-    padding: 5px;
+#bettermust  button {
+    padding: 10px 20px;
     background-color: #292119;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
-    color:#F6F3E5 ;
+    display: block;
   }
   
 #bettermust  button:hover {
