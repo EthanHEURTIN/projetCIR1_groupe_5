@@ -46,13 +46,13 @@
                             <p>Rechercher par : </p>
                         </li>
                         <li>
-                            <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur(),activerBoutons() ">Realisateur</a>
+                            <a class="bouton Realisateur" id="realisateur" onclick="putRealisateur();activerBoutons(this.id); ">Realisateur</a>
                         </li>
                         <li>
-                            <a class="bouton Titre" id="titre" onclick="putTitre(),activerBoutons() ">Titre</a>
+                            <a class="bouton Titre" id="titre" onclick="putTitre();activerBoutons(this.id); ">Titre</a>
                         </li>
                         <li>
-                            <a class="bouton Genre" id="genre" onclick="putGenre(),activerBoutons() ">Genre</a>
+                            <a class="bouton Genre" id="genre" onclick="putGenre();activerBoutons(this.id); ">Genre</a>
                         </li>
                     </ul>
                     <form class="here" id="id" action="result.html">
