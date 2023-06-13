@@ -596,5 +596,10 @@ function activerBoutons(boutonId) {
 
 function activerSend(){
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
-  boutonSend.classList.remove('disabled');
+  boutonSend.classList.add('typeOk');
+}
+
+function putImputOk(){
+  var boutonSend = document.getElementsByClassName("boutonSend")[0];
+  boutonSend.classList.add('imputOk');
 }

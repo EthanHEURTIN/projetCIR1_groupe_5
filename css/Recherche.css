@@ -109,7 +109,9 @@ button {
     margin: 4px 2px; 
     border-radius: 5px; 
     margin-bottom: 40px;   
-    cursor: pointer;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+    pointer-events: none;
 }
 .bouton:hover{
     background-color: #14100c;
@@ -134,8 +136,20 @@ button:hover{
     background-color: #0b0908;
 }
 
-.disabled {
-    opacity: 0.5; 
-    cursor: not-allowed; 
+.typeOk.imputOk {
+    background-color: #292119; 
+    border: none; 
+    color: #F6F3E5;
+    padding: 10px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px; 
+    border-radius: 5px; 
+    margin-bottom: 40px;   
+    cursor: pointer;
+    opacity:1;
+    pointer-events:all;
 }
 
