@@ -76,19 +76,7 @@ function writeFileAdd(formId1, formId2, formId3, formId4, func) {
   element.click();
   document.body.removeChild(element);
 }
-function writeFileDelete(formId1, formId2, func) {
-  var element = document.createElement('a');
-  let text1 = formId1;
-  let text2 = formId2;
-  let textToSave = func + ";" + text1 + ";" + text2;
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
-  element.setAttribute('download', 'request.txt');
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
-}
 
 // -------------------------
 
@@ -277,36 +265,6 @@ function callWriteAdd() {
 
 }
 
-
-function callWriteDelete() {
-  event.preventDefault();
-  let values = separateFormInputs('form-findByDelete');
-  let nameValue = values[0];
-  let request1 = "deleteFilm";
-  console.log(nameValue);
-  let titleValue = values[1];
-  console.log(titleValue);
-  if (nameValue !== "" && titleValue !== "") {
-    writeFileDelete(nameValue, titleValue, request1);
-    document.getElementById('nameError2').textContent = "";
-    document.getElementById('titleError2').textContent = "";
-    document.getElementById("form-findByDelete").reset();
-    document.getElementById("myModal").style.display = "block";
-    inRead();
-
-  }
- else {
-    if (nameValue === ""||isNaN(nameValue) == false) {
-      document.getElementById('nameError2').textContent = "Veuillez remplir ce champ.";
-      
-    }
-    if (titleValue === ""||isNaN(titleValue) == false) {
-      document.getElementById('titleError2').textContent = "Veuillez remplir ce champ.";
-    }
-
-}
-}
-
 // ------- READ FILE -------
 function readFileByName(fileName){
 
@@ -325,11 +283,18 @@ function readFileByName(fileName){
 
 function readFile(){
   readFileByName("ready.txt");
+
   return readFileByName("results.txt");
 }
 // -------------------------
 
-
+//supprime le ready.txt
+function remove(){
+    var myObject;
+    myObject = new ActiveXObject("Scripting.FileSystemObject");
+    var f = myObject.GetFile("c:\\ready.txt");
+    f.Delete();
+}
 
 
 
@@ -647,9 +612,4 @@ function etatMachine() {
   if (text2 == "stopWithSuccess") {
     alert("programme arrêté");
   }
-}
-
-function pageSuivante() {
-  currentPage++;
-  afficherTableau(tableauDeDonnees); 
 }
