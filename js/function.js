@@ -560,12 +560,12 @@ function callWrite(){
 
 
 function activerBoutons(boutonId) {
-  var boutons = document.getElementsByClassName('bouton'); // Récupérer tous les boutons
-  for (var i = 0; i < boutons.length; i++) {  // Parcourir tous les boutons
-    boutons[i].classList.remove('active');    // Supprimer la classe "active" de tous les boutons
+  var boutons = document.getElementsByClassName('bouton'); 
+  for (var i = 0; i < boutons.length; i++) { 
+    boutons[i].classList.remove('active');
   }
   var boutonClique = document.getElementById(boutonId);
-  boutonClique.classList.add('active'); // Ajouter la classe "active" au bouton cliqué
+  boutonClique.classList.add('active'); 
 }
 
 function activerSend(){
