@@ -11,9 +11,8 @@ function writeFile(id_form,func) {
       textToSave += ";" + text1[i].value;
   }
 
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));//encodage du fichier
   element.setAttribute('download', 'request.txt');
-
   element.style.display = 'none';
   document.body.appendChild(element);
   element.click();
@@ -52,28 +51,25 @@ function writeFileAll(formId1, func1, formId2, func2, formId3, func3,formId4, fu
   element.click();
   document.body.removeChild(element);
 }
-
-function writeFileAddDelete(formId1, formId2, formId3, formId4, func) {
+function writeFileAdd(formId1, formId2, formId3, formId4, func) {
   var element = document.createElement('a');
   let text1 = formId1;
   let text2 = formId2;
   let text3 = formId3;
   let text4 = formId4;
-  let textToSave = func;
-  if (text1 !== "") {
-    textToSave +=";" + text1;
-  }
-  if (text2 !== "") {
-    textToSave += ";" + text2;
-  }
-  if (text3 !== "") {
-    textToSave +=  ";" + text3;
-  }
-  if (text4 !== "") {
-    textToSave += ";" + text4 ;
-  }
-
- 
+  let textToSave = func + ";" + text1 + ";" + text2 + ";" + text3 + ";" + text4;
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
+  element.setAttribute('download', 'request.txt');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+function writeFileDelete(formId1, formId2, func) {
+  var element = document.createElement('a');
+  let text1 = formId1;
+  let text2 = formId2;
+  let textToSave = func + ";" + text1 + ";" + text2;
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(textToSave));
   element.setAttribute('download', 'request.txt');
 
@@ -101,38 +97,37 @@ function separateFormInputs(formId) {
   return values;
 }
 
-function callWriteDirector() {//ecrit le realisateur dans le fichier request.txt
-  callDirector=document.getElementById("form-findByDirector").value;
-  if (callDirector !== "") {
+function callWriteDirector() {
+  let callDirector = document.getElementById("form-findByDirector").value;
+  if (callDirector != "") {
     writeFile("form-findByDirector", "findByDirector");
   }
-
-}
-function callWriteTime() {//ecrit temp du film dans le fichier request.txt
-  callTime=document.getElementById("form-findByTime").value;
-  if (callTime !== "") {
-    writeFile("form-findByTime", "findByTimer");
-  }
 }
 
-function callWriteType() { //ecrit le genre de film dans le fichier request.txt
-  callType=document.getElementById("form-findByType").value;
-  if(callType !== ""){
+function callWriteTime() {
+  let callTime1 = document.getElementsByName("time1")[0].value;
+  let callTime2 = document.getElementsByName("time2")[0].value;
+
+  if (callTime1 != "" && callTime2 != "") {
+    writeFile("form-findByTime", "findByTime");
+  } 
+}
+
+function callWriteType() {
+  let callType = document.getElementById("form-findByType").value;
+  if(callType!=""){
     writeFile("form-findByType", "findByType");
-  }
-
+  } 
 }
 
-function callWriteTitle() {//ecrit le titre dans le fichier request.txt
-  callTitle=document.getElementById("form-findByTitle").value;
-  if (callTitle !== "") {
+function callWriteTitle() {
+  let callTitle = document.getElementById("form-findByTitle").value;
+  if(callTitle!=""){
     writeFile("form-findByTitle", "findByTitle");
   }
-  else{
-    callTitle.setCustomValidity("entre un temps");
-  }
-
 }
+
+
 function putRealisateur(){
   let element=document.querySelector(".here");
   let element2 = document.getElementById("tap");
@@ -163,9 +158,9 @@ function putGenre(){
   element2.setAttribute('tap', 'Type');
 }
 
-function callWrite(){
+function callWrite() {
   let element = document.querySelector('.here');
-  const id = element.id;
+  let id = element.id;
   console.log(id)
   if (id=='form-findByDirector'){
     callWriteDirector()
@@ -177,9 +172,10 @@ function callWrite(){
     callWriteType()
   }
   if (id=="id"){
-    
+
   }
 }
+
 function callWriteAll() {
   let values = separateFormInputs('form-findByAll');
   let nameValue = values[0];
@@ -196,15 +192,15 @@ function callWriteAll() {
   let timeValue = timeValuemin + ";" + timeValuemax;
   let request4 = "findByTimer";
   console.log(timeValue);
-  if (nameValue == "") {
+  if (nameValue == ""||isNaN(nameValue) == false) {
     nameValue = "";
     request1 = "";
   }
-  if (titleValue == "") {
+  if (titleValue == ""||isNaN(titleValue) == false) {
     titleValue = "";
     request2 = "";
   }
-  if (typeValue == "") {
+  if (typeValue == ""||isNaN(typeValue) == false) {
     typeValue = "";
     request3 = "";
   }
@@ -212,7 +208,10 @@ function callWriteAll() {
     timeValue = "";
     request4 = "";
   }
-
+  if(nameValue==""&&titleValue==""&&typeValue==""&&timeValue==""){
+    alert("Veuillez remplir au moins un champ");
+    return;
+  }
 
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
@@ -233,7 +232,7 @@ function callWriteAdd() {
 
   console.log(timeValue);
   if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
-    writeFileAddDelete(nameValue, titleValue, typeValue, timeValue, request1);
+    writeFileAdd(nameValue, titleValue, timeValue, typeValue, request1);
     document.getElementById('nameError1').textContent = "";
     document.getElementById('titleError1').textContent = "";
     document.getElementById('typeError1').textContent = "";
@@ -243,21 +242,28 @@ function callWriteAdd() {
 
   }
  else {
-  if (nameValue === "") {
+  
+  if (nameValue === ""||isNaN(nameValue) == false) {
     document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
     
   }
-  if (titleValue === "") {
+  if (titleValue === "" ||isNaN(titleValue) == false) {
     document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
   }
-  if (typeValue === "") {
+  if (typeValue === "" ||isNaN(typeValue) == false) {
     document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
   }
-  if (timeValue === "") {
+  if (timeValue === "" ||isNaN(timeValue) == false) {
     document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
   }
+    
+  }
+  let text=readFile();
+  if(text==""){
+    alert("opération impossible film deja existant");
+  }
 }
-}
+
 
 function callWriteDelete() {
   event.preventDefault();
@@ -266,39 +272,28 @@ function callWriteDelete() {
   let request1 = "deleteMovie";
   console.log(nameValue);
   let titleValue = values[1];
-  
   console.log(titleValue);
-  let typeValue = values[2];
- 
-  console.log(typeValue);
-  let timeValue = values[3];
-
-  console.log(timeValue);
-  if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
-    writeFileAddDelete(nameValue, titleValue, typeValue, timeValue, request1);
+  if (nameValue !== "" && titleValue !== "") {
+    writeFileDelete(nameValue, titleValue, request1);
     document.getElementById('nameError2').textContent = "";
     document.getElementById('titleError2').textContent = "";
-    document.getElementById('typeError2').textContent = "";
-    document.getElementById('timeError2').textContent = "";
     document.getElementById("form-findByDelete").reset();
     document.getElementById("myModal").style.display = "block";
 
   }
  else {
-  if (nameValue === "") {
-    document.getElementById('nameError2').textContent = "Veuillez remplir ce champ.";
-    
+    if (nameValue === ""||isNaN(nameValue) == false) {
+      document.getElementById('nameError2').textContent = "Veuillez remplir ce champ.";
+      
+    }
+    if (titleValue === ""||isNaN(titleValue) == false) {
+      document.getElementById('titleError2').textContent = "Veuillez remplir ce champ.";
+    }
   }
-  if (titleValue === "") {
-    document.getElementById('titleError2').textContent = "Veuillez remplir ce champ.";
+  let text=readFile();
+  if(text==""){
+    alert("opération impossible film inexistant");
   }
-  if (typeValue === "") {
-    document.getElementById('typeError2').textContent = "Veuillez remplir ce champ.";
-  }
-  if (timeValue === "") {
-    document.getElementById('timeError2').textContent = "Veuillez remplir ce champ.";
-  }
-}
 }
 
 
@@ -308,7 +303,9 @@ function readFileByName(fileName){
 
   let xhr = new XMLHttpRequest();
   do {
-      xhr.open("GET", fileName, false);
+      xhr.open("GET", fileName, false);//recupere le fichier txt
+  
+
       xhr.send(null);
 
   }while(xhr.status === 404);
@@ -329,10 +326,9 @@ function readFile(){
 
 
 let text = readFile();//recupere le fichier results.txt en un simple fichier txt
-function finderror(text) {
-  let error = text.split("\n")[0].split(";")[1];
-  alert(error);
-}
+
+
+
 function getURLParameter(name) {
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
@@ -572,7 +568,7 @@ function closeModal() {
 
 function callWrite(){
   let element = document.querySelector('.here');
-  const id = element.id;
+  let id = element.id;
   console.log(id)
   if (id=='form-findByDirector'){
     callWriteDirector()
@@ -584,7 +580,7 @@ function callWrite(){
     callWriteType()
   }
   if (id=="id"){
-    //print/////////////////////////////
+
   }
 }
 function activerBoutons() {
