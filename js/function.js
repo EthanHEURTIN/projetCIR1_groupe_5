@@ -640,3 +640,8 @@ function etatMachine() {
     alert("programme arrêté");
   }
 }
+
+function pageSuivante() {
+  currentPage++;
+  afficherTableau(tableauDeDonnees); 
+}

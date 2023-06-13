@@ -14,42 +14,44 @@
  <title> index </title>
  </head>
  <body>
-    <header>
-      <nav class="navbar">
-          <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
-          <nav class="nav-links">
-              <ul>
-                  <li>
-                      <a href="Accueil.html" ><img src="../image/Accueil.png" class="logonav">Accueil</a>
-                  </li>
-                  <li>
-                      <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
-                  </li>
-                  <li class="admin-button">
-                    <a onclick="admin()"><img src="../image/Admin.png" class="logonav">Admin</a>
-                  </li>
-                  <li>
-                    <a onclick="etatMachine()"><img src="../image/On.png" class="logonav"></a>
+  <header>
+    <nav class="navbar">
+        <img class="logo" src="../image/Logo.png" alt="LabISEN" onclick="toAccueil()">
+        <nav class="nav-links">
+            <ul>
+                <li>
+                    <a href="Accueil.html" ><img src="../image/Accueil.png" class="logonav">Accueil</a>
                 </li>
-              </ul>
-      </nav>
-   </header>
-   <div class="contenu">
-      <h1>Resultat</h1>
-      <div id = "tmpData"> </div>
-      
-      <div id="pp"></div>
-       
+                <li>
+                    <a href="Recherche.html"><img src="../image/Recherche.png" class="logonav">Recherche</a>
+                </li>
+                <li class="admin-button">
+                  <a onclick="admin()"><img src="../image/Admin.png" class="logonav">Admin</a>
+                </li>
+                <li>
+                  <a onclick="etatMachine()"><img src="../image/On.png" class="logonav"></a>
+              </li>
+            </ul>
+    </nav>
+ </header>
+ <div class="contenu">
+    <h1>Resultat</h1>
+    <div id="tmpData"></div>
     
-      <div id="pagination">
-        <label for="page">Page:</label>
-        <select name="page" id="page" onchange="if(this.value === 'next') pageSuivante();">
-          <option value="1">1</option>
-          <option value="2">2</option>
+    <div id="pp"></div>
+    <div class="pagination">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+   </div>
+    <div id="resultat"></div>
+    
 
-          <option value="next">Page suivante</option>
-        </select>
-      </div>
+ </div>
+       
+     
    <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
