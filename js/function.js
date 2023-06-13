@@ -570,9 +570,6 @@ function closeModal() {
 }
 
 
-
-
-
 function callWrite(){
   let element = document.querySelector('.here');
   const id = element.id;
@@ -591,8 +588,8 @@ function callWrite(){
   }
 }
 function activerBoutons() {
-  const boutons = document.querySelectorAll('.bouton');
   
+  const boutons = document.querySelectorAll('.bouton');
   for (let i = 0; i < boutons.length; i++) {
     boutons[i].addEventListener('click', function() {
       for (let j = 0; j < boutons.length; j++) {
@@ -604,5 +601,6 @@ function activerBoutons() {
     });
   }
 }
+activerBoutons();
   
 
