@@ -212,7 +212,6 @@ function callWriteAll() {
     alert("Veuillez remplir au moins un champ");
     return;
   }
-  window.location="result.html";
 
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
@@ -241,33 +240,27 @@ function callWriteAdd() {
     document.getElementById('timeError1').textContent = "";
     document.getElementById("form-findByAdd").reset();
     document.getElementById("myModal").style.display = "block";
+    inRead();
 
   }
-  let r = readFile();
-  if(r = "alreadyExist"){
-    alert("opération impossible film déjà existant");
-  }
-  }
-  if(r = "addWithSuccess"){
-    alert("opération realisée avec successe !!!!");
-  }
- else {
+
+  else {
   
-  if (nameValue === ""||isNaN(nameValue) == false) {
-    document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
+    if (nameValue === ""||isNaN(nameValue) == false) {
+      document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
+      
+    }
+    if (titleValue === "" ||isNaN(titleValue) == false) {
+      document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
+    }
+    if (typeValue === "" ||isNaN(typeValue) == false) {
+      document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
+    }
+    if (timeValue === "" ||isNaN(timeValue) == false) {
+      document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
+    }
     
   }
-  if (titleValue === "" ||isNaN(titleValue) == false) {
-    document.getElementById('titleError1').textContent = "Veuillez remplir ce champ.";
-  }
-  if (typeValue === "" ||isNaN(typeValue) == false) {
-    document.getElementById('typeError1').textContent = "Veuillez remplir ce champ.";
-  }
-  if (timeValue === "" ||isNaN(timeValue) == false) {
-    document.getElementById('timeError1').textContent = "Veuillez remplir ce champ.";
-  }
-    
-
 
 }
 
@@ -286,6 +279,7 @@ function callWriteDelete() {
     document.getElementById('titleError2').textContent = "";
     document.getElementById("form-findByDelete").reset();
     document.getElementById("myModal").style.display = "block";
+    inRead();
 
   }
  else {
@@ -302,7 +296,6 @@ function callWriteDelete() {
     alert("opération impossible film inexistant");
   }
 }
-
 
 
 // ------- READ FILE -------
@@ -604,4 +597,31 @@ function activerBoutons(boutonId) {
 function activerSend(){
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
   boutonSend.classList.remove('disabled');
+}
+function inRead(){
+  let text=readFile();
+  let text2=text.split("\n")[0];
+  console.log(text2);
+  if(text2=="addWithSuccess"){
+    alert("film ajouté avec succès");
+  }
+  if(text2=="delWithSuccess"){
+    alert("film supprimé avec succès");
+  }
+  if(text2=="alreadyExist"){
+    alert("film déjà existant");
+  }
+  if(text2=="doesntExist"){
+    alert("film inexistant");
+  }
+}
+
+function etatMachine() {
+  writeRequetOff("stopProgram");
+  let text = readFile();
+  let text2 = text.split("\n")[0];
+  console.log(text2);
+  if (text2 == "stopWithSuccess") {
+    alert("programme arrêté");
+  }
 }

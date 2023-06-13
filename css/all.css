@@ -165,3 +165,18 @@ h1{
     padding-left: 5px;
     color: #26b72b;
   }
+
+.bn_etat{
+    background-color: #32CD32;
+    color: #F6F3E5;
+    border: none;
+    border-radius: 500px;
+    width: 30px;
+    height: px;
+    cursor: pointer;
+
+ }
+.navbar .bn_etat{
+    margin-right: 5px;
+    
+}
