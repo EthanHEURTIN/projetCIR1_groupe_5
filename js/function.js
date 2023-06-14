@@ -1,6 +1,6 @@
 
 
-// ------- WRITE FILE -------
+// ------- ÉCRIRE UN FICHIER -------
 
 function writeFile(id_form,func) {
 
@@ -110,7 +110,7 @@ function writeFileAdd(formId1, formId2, formId3, formId4, func) {
 
 
 
-function separateFormInputs(formId) {
+function separateFormInputs(formId) {//recupere les valeurs des inputs
   let form = document.getElementById(formId);
   let inputs = form.getElementsByTagName('input');
 
@@ -123,7 +123,7 @@ function separateFormInputs(formId) {
   return values;
 }
 
-function callWriteDirector() {
+function callWriteDirector() {//appel la fonction writeFile avec les parametres
   let callDirector = document.getElementById("form-findByDirector").value;
   if (callDirector != "") {
     writeFile("form-findByDirector", "findByDirector");
@@ -134,7 +134,7 @@ function callWriteDirector() {
   }
 }
 
-function callWriteTime() {
+function callWriteTime() {//appel la fonction writeFile avec les parametres
   let callTime1 = document.getElementsByName("time1")[0].value;
   let callTime2 = document.getElementsByName("time2")[0].value;
 
@@ -144,7 +144,7 @@ function callWriteTime() {
   } 
 }
 
-function callWriteType() {
+function callWriteType() {//appel la fonction writeFile avec les parametres
   let callType = document.getElementById("form-findByType").value;
   if(callType!=""){
     writeFile("form-findByType", "findByType");
@@ -152,7 +152,7 @@ function callWriteType() {
   } 
 }
 
-function callWriteTitle() {
+function callWriteTitle() {//appel la fonction writeFile avec les parametres
   let callTitle = document.getElementById("form-findByTitle").value;
   if(callTitle!=""){
     writeFile("form-findByTitle", "findByTitle");
@@ -161,7 +161,7 @@ function callWriteTitle() {
 }
 
 
-function putRealisateur(){
+function putRealisateur(){//change les attributs des elements html
   let element=document.querySelector(".here");
   let element2 = document.getElementById("tap");
   let element3 =  document.getElementById("searchType");
@@ -172,7 +172,7 @@ function putRealisateur(){
   const id = element.id;
   console.log(id);
 }
-function putTitre(){
+function putTitre(){//change les attributs des elements html
   let element=document.querySelector(".here");
   let element2 = document.getElementById("tap");
   let element3 =  document.getElementById("searchType");
@@ -181,7 +181,7 @@ function putTitre(){
   element.setAttribute('id', 'form-findByTitle');
   element2.setAttribute('tap', 'Title');
 }
-function putGenre(){
+function putGenre(){//change les attributs des elements html
   let element=document.querySelector(".here");
   let element2 = document.getElementById("tap");
   let element3 =  document.getElementById("searchType");
@@ -191,7 +191,7 @@ function putGenre(){
   element2.setAttribute('tap', 'Type');
 }
 
-function callWrite() {
+function callWrite() {//appel la fonction writeFile avec les parametres
   let element = document.querySelector('.here');
   let id = element.id;
   console.log(id)
@@ -210,7 +210,7 @@ function callWrite() {
   }
 }
 
-function callWriteAll() {
+function callWriteAll() {//appel la fonction writeFile avec les parametres
   let values = separateFormInputs('form-findByAll');
   let nameValue = values[0];
   let request1 = "findByDirector";
@@ -252,7 +252,7 @@ function callWriteAll() {
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
 
-function callWriteAdd() {
+function callWriteAdd() {//appel la fonction writeFile avec les parametres
   event.preventDefault();
   let values = separateFormInputs('form-findByAdd');
   let nameValue = values[0];
@@ -270,10 +270,6 @@ function callWriteAdd() {
   
   if (nameValue !== "" && titleValue !== "" && typeValue !== "" && timeValue !== "") {
     writeFileAdd(nameValue, titleValue, timeValue, typeValue, request1);
-    document.getElementById('nameError1').textContent = "";
-    document.getElementById('titleError1').textContent = "";
-    document.getElementById('typeError1').textContent = "";
-    document.getElementById('timeError1').textContent = "";
     document.getElementById("form-findByAdd").reset();
     document.getElementById("myModal").style.display = "block";
     inRead();
@@ -571,7 +567,7 @@ function openModal() {
     modal.style.display = "block";
   }
   else{
-    alert("oue tu connais");
+    alert("Erreur de mot de passe !!");
   }
 }
 
