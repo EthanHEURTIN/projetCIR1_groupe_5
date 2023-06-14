@@ -2,32 +2,3 @@
 Villeneuve;Arrival;116;Science Fiction
 Scott;Blade Runner;117;Science Fiction
 Sciamma;Portrait of a Lady on Fire;119;Romance
-Mendes;Road to Perdition;117;Crime
-Mendes;1917;119;War
-Lee;Do the Right Thing;120;Drama
-Lanthimos;The Lobster;119;Comedy
-Kubrick;Full Metal Jacket;116;War
-Jenkins;If Beale Street Could Talk;119;Romance
-Haynes;Carol;118;Romance
-Fincher;The Social Network;120;Drama
-Demme;The Silence of the Lambs;118;Thriller
-Del Toro;Pan's Labyrinth;118;Fantasy
-Coen;The Big Lebowski;117;Comedy
-Boyle;Slumdog Millionaire;120;Drama
-Bigelow;Point Break;120;ActionVilleneuve;Sicario;122;Thriller
-Mendes;American Beauty;122;Drama
-Lee;The Old Guard;125;Action
-Koreeda;Shoplifters;121;Drama
-Howard;Rush;123;Biography
-Farhadi;A Separation;123;Drama
-Del Toro;The Shape of Water;123;Fantasy
-Coen;No Country for Old Men;122;ThrillerWaititi;Thor: Ragnarok;130;Superhero
-Spielberg;Jurassic Park;127;Action
-Sorkin;The Trial of the Chicago 7;129;Drama
-Payne;Sideways;127;Comedy
-McQueen;Widows;129;Thriller
-Jonze;Her;126;Romance
-Johnson;Knives Out;130;Mystery
-Fincher;Seven;127;Thriller
-DuVernay;Selma;128;Biography
-Chazelle;La La Land;128;Musical

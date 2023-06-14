@@ -187,24 +187,6 @@ function putGenre(){//change les attributs des elements html
   element2.setAttribute('tap', 'Type');
 }
 
-function callWrite() {//appel la fonction writeFile avec les parametres
-  let element = document.querySelector('.here');
-  let id = element.id;
-  console.log(id)
-  if (id=='form-findByDirector'){
-    callWriteDirector()
-    
-  }
-  if (id=='form-findByTitle'){
-    callWriteTitle()
-  }
-  if (id=='form-findByType'){
-    callWriteType()
-  }
-  if (id=="id"){
-
-  }
-}
 
 function callWriteAll() {//appel la fonction writeFile avec les parametres
   let values = separateFormInputs('form-findByAll');
@@ -272,7 +254,7 @@ function callWriteAdd() {//appel la fonction writeFile avec les parametres
 
   }
 
-  else {
+  else {//affiche un message d'erreur si un champ n'est pas rempli
   
     if (nameValue === ""||isNaN(nameValue) == false) {
       document.getElementById('nameError1').textContent = "Veuillez remplir ce champ.";
@@ -293,7 +275,7 @@ function callWriteAdd() {//appel la fonction writeFile avec les parametres
 }
 
 // ------- READ FILE -------
-function readFileByName(fileName){
+function readFileByName(fileName){//lit le fichier txt
 
   let xhr = new XMLHttpRequest();
   do {
@@ -308,9 +290,11 @@ function readFileByName(fileName){
   return xhr.responseText;
 }
 
-function readFile(){
+function readFile(){//lit le fichier txt
   readFileByName("ready.txt");
-
+  while(readFileByName("ready.txt")=="false"){
+    readFileByName("ready.txt");
+  }
   return readFileByName("results.txt");
 }
 // -------------------------
@@ -319,14 +303,14 @@ function readFile(){
 
 
 
-function getURLParameter(name) {
+function getURLParameter(name) {//recupere les parametres de l'url
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
   return urlParams.get(name);
 
 }
 
-function rechercheDirector() {
+function rechercheDirector() {//recupere les parametres du directeur de l'url
   let text = readFile();
   let firstDirector1 = text.split("\n");
   let firstDirector2 = firstDirector1[1];
@@ -335,14 +319,14 @@ function rechercheDirector() {
   return firstDirector4;
 }
 
-function rechercheTime() {
+function rechercheTime() {//recupere les parametre de la duree de l'url
   let timeValue1 = getURLParameter("time1");
   let timeValue2 = getURLParameter("time2");
   let timeValue = [timeValue1, timeValue2];
   return timeValue;
 }
 
-function rechercheType() {
+function rechercheType() {//recupere les parametre du genre de l'url
   let text = readFile();
   let firstDirector1 = text.split("\n");
   let firstDirector2 = firstDirector1[1];
@@ -351,7 +335,7 @@ function rechercheType() {
   return firstDirector4;
 }
 
-function rechercheTitle() {
+function rechercheTitle() {//recupere les parametre du titre de l'url 
   let text = readFile();
   let firstDirector1 = text.split("\n");
   let firstDirector2 = firstDirector1[1];
@@ -360,7 +344,7 @@ function rechercheTitle() {
   return firstDirector4;
 }
 
-function writeRecherche() {
+function writeRecherche() {//ecrit les parametres de la recherche dans la page result.html
   let directorValue = rechercheDirector();
   let titleValue = rechercheTitle();
   let typeValue = rechercheType();
@@ -387,7 +371,7 @@ function writeRecherche() {
 
 writeRecherche();
 
-function tempExecution() {
+function tempExecution() {//ecrit le temps d'execution de la recherche
   let text = readFile();
   let tmpData = text.split("\n")[0].split(";")[0];
   document.getElementById("tmpData").innerHTML = "Temps d'exécution : " + tmpData + " ms";
@@ -415,7 +399,7 @@ function hasTitleParam() {
   return urlParams.has("title");
 }
 
-function findHasParam() {
+function findHasParam() {//trouve le parametre de la recherche et le retourne
   if (hasNameParam()) {
     return "realisateur";
   }
@@ -431,8 +415,8 @@ function findHasParam() {
 }
 
 console.log(findHasParam());
-
-function creerTableauFilms() {
+// ------------ Trie le tableau ------------
+function creerTableauFilms() {//creer un tableau avec les films
   let text = readFile();
   let boubou = findHasParam();
   let tableau = [];
@@ -491,9 +475,22 @@ console.log(tableauFilms);
 
 
 
+//fait une fonction qui prend le nombre de ligne du tableau et qui fait un random entre 0 et le nombre de ligne
+function getNbMovies() {//recupere le nombre de film
+  let text = readFile();
+  let lignes = text.split("\n");
+  let nbMovies = lignes.length - 1;
+  //cherche la balise div nmb 
+  let divNb = document.getElementById("nmb");
+  //change le texte de la balise div nmb
+  divNb.innerHTML = "<p>Nombre de films sur la page : " + nbMovies+"</p>";
+}
+getNbMovies();
+// ------- AFFICHER TABLEAU -------
 
 
-function afficherTableau(tableau) {
+
+function afficherTableau(tableau) {//affiche le tableau des films
   let html = "<table>";
   let boubou = findHasParam();
 
@@ -556,7 +553,7 @@ function afficherTableau(tableau) {
 afficherTableau(tableauFilms);
 
 
-function openModal() {
+function openModal() {//ouvre la fenetre modal si le mot de passe est bon
   let pwd=prompt("Veuillez entrer le mot de passe:");
   if(pwd=="leandrolpb"){
     let modal = document.getElementById("myModal");
@@ -567,14 +564,14 @@ function openModal() {
   }
 }
 
-function closeModal() {
+function closeModal() {//ferme la fenetre modal et reset les champs
   let modal = document.getElementById("myModal");
   modal.style.display = "none";
   modal.reset();
 }
 
 
-function callWrite(){
+function callWrite(){//appel la fonction writeFile avec les parametres du real qui a fait le plus de film
   let element = document.querySelector('.here');
   let id = element.id;
   console.log(id)
@@ -593,7 +590,7 @@ function callWrite(){
 }
 
 
-function activerBoutons(boutonId) {
+function activerBoutons(boutonId) {//active les boutons de la barre de navigation
   var boutons = document.getElementsByClassName('bouton'); 
   for (var i = 0; i < boutons.length; i++) { 
     boutons[i].classList.remove('active');
@@ -602,13 +599,13 @@ function activerBoutons(boutonId) {
   boutonClique.classList.add('active'); 
 }
 
-function activerSend(){
+function activerSend(){//active le bouton send si un champ est rempli
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
   boutonSend.classList.add('typeOk');
 }
 
 
-function putImputOk() {
+function putImputOk() {//change les attributs des elements html 
   var input = document.getElementById("searchType");
   var boutonSend = document.getElementsByClassName("boutonSend")[0];
 
@@ -620,7 +617,7 @@ function putImputOk() {
   
 }
 
-function inRead(){
+function inRead(){//appel la fonction readFile et affiche le resultat de l'ajout
   let text=readFile();
   let text2=text.split("\n")[0];
   console.log(text2);
@@ -642,7 +639,7 @@ function inRead(){
   */
 }
 
-function etatMachine() {
+function etatMachine() {//appel la fonction readFile et affiche l'etat de la machine 
   writeRequetOff("stopProgram");
   let text = readFile();
   let text2 = text.split("\n")[0];
@@ -652,13 +649,13 @@ function etatMachine() {
   }
 }
 
-function callWriteBest(){
+function callWriteBest(){//appel la fonction writeFile avec les parametres du real qui a fait le plus de film
   writeRequetBestWorst("dataDirectors","max");
   document.getElementById("bestreal").innerHTML="<p>Le realisateur qui a fait le plus de film est "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" film(s). </p>";
   
 
 }
-function callWriteWorst(){
+function callWriteWorst(){//appel la fonction writeFile avec les parametres du real qui a fait le moins de film
   writeRequetBestWorst("dataDirectors","min");
   document.getElementById("worstreal").innerHTML="<p>Le realisateur qui a fait le moins de film est "+readFile().split(";")[0]+" avec "+readFile().split(";")[1]+" film(s). </p>";
 }
