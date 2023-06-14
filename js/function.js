@@ -119,7 +119,6 @@ function separateFormInputs(formId) {//recupere les valeurs des inputs
     let input = inputs[i];
     values.push(input.value);
   }
-
   return values;
 }
 
@@ -127,10 +126,7 @@ function callWriteDirector() {//appel la fonction writeFile avec les parametres
   let callDirector = document.getElementById("form-findByDirector").value;
   if (callDirector != "") {
     writeFile("form-findByDirector", "findByDirector");
-    
     window.open("result.html?name=");
-
-    
   }
 }
 
@@ -148,7 +144,7 @@ function callWriteType() {//appel la fonction writeFile avec les parametres
   let callType = document.getElementById("form-findByType").value;
   if(callType!=""){
     writeFile("form-findByType", "findByType");
-    window.open("result.html?type=" + document.getElementById("form-findByType").value);
+    window.open("result.html?type=");
   } 
 }
 
@@ -248,7 +244,7 @@ function callWriteAll() {//appel la fonction writeFile avec les parametres
     return;
   }
   //dirige vers la page de result.html
-  window.location.href = "result.html?name=" + nameValue + "&title=" + titleValue + "&type=" + typeValue + "&time1=" + timeValuemin + "&time2=" + timeValuemax;
+  window.open("result.html? title=" + titleValue + "&type=" + typeValue + "&time1=" + timeValuemin + "&time2=" + timeValuemax + "&name=" + nameValue);
   writeFileAll(nameValue,request1 , titleValue, request2, typeValue, request3, timeValue, request4);
 }
 
@@ -411,7 +407,7 @@ function hasTimeParam() {
 
 function hasTypeParam() {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.has("genre");
+  return urlParams.has("type");
 }
 
 function hasTitleParam() {
